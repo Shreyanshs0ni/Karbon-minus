@@ -73,14 +73,16 @@ export default function MaterialsPage() {
       <main className="mx-auto max-w-5xl px-4 py-10">
         <Link
           href={`/project/${id}`}
-          className="text-sm text-emerald-800 hover:underline"
+          className="text-sm text-accent hover:underline"
         >
           ← Dashboard
         </Link>
-        <h1 className="mt-4 text-2xl font-semibold">Materials</h1>
+        <h1 className="mt-4 text-2xl font-semibold text-foreground">
+          Materials
+        </h1>
 
         <Card className="mt-6">
-          <h2 className="text-lg font-medium">Add with AI</h2>
+          <h2 className="text-lg font-medium text-foreground">Add with AI</h2>
           <MaterialInput
             onAdd={addMaterial}
             existingMaterialIds={materials.map((m) => m.materialId)}
@@ -88,11 +90,13 @@ export default function MaterialsPage() {
         </Card>
 
         <Card className="mt-6">
-          <h2 className="text-lg font-medium">Browse database</h2>
+          <h2 className="text-lg font-medium text-foreground">
+            Browse database
+          </h2>
           <div className="mt-2">
-            <label className="text-sm text-slate-600">Category</label>
+            <label className="text-sm text-muted">Category</label>
             <select
-              className="ml-2 rounded border border-slate-300 px-2 py-1 text-sm"
+              className="ml-2 rounded border border-border bg-input-bg px-2 py-1 text-sm text-foreground"
               value={cat}
               onChange={(e) => setCat(e.target.value)}
             >
@@ -109,11 +113,10 @@ export default function MaterialsPage() {
             {browse.slice(0, 40).map((m) => (
               <li
                 key={m.id}
-                className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 py-2"
+                className="flex flex-wrap items-center justify-between gap-2 border-b border-divide py-2 text-foreground"
               >
                 <span>
-                  {m.name}{" "}
-                  <span className="text-slate-500">({m.category})</span>
+                  {m.name} <span className="text-subtle">({m.category})</span>
                 </span>
                 <Button
                   variant="secondary"
@@ -131,7 +134,9 @@ export default function MaterialsPage() {
         </Card>
 
         <Card className="mt-6">
-          <h2 className="text-lg font-medium">Project line items</h2>
+          <h2 className="text-lg font-medium text-foreground">
+            Project line items
+          </h2>
           <MaterialList
             materials={materials}
             onRemove={removeMaterial}
@@ -140,24 +145,26 @@ export default function MaterialsPage() {
         </Card>
 
         <Card className="mt-6">
-          <h2 className="text-lg font-medium">Lower-carbon alternatives</h2>
-          {altLoading && <p className="text-sm text-slate-500">Analyzing…</p>}
+          <h2 className="text-lg font-medium text-foreground">
+            Lower-carbon alternatives
+          </h2>
+          {altLoading && <p className="text-sm text-subtle">Analyzing…</p>}
           {!altLoading && alternatives.length === 0 && (
-            <p className="text-sm text-slate-600">No suggestions yet.</p>
+            <p className="text-sm text-muted">No suggestions yet.</p>
           )}
           <ul className="mt-4 space-y-4">
             {alternatives.slice(0, 8).map((a, i) => (
               <li
                 key={i}
-                className="rounded border border-slate-200 p-3 text-sm"
+                className="rounded border border-border p-3 text-sm text-foreground"
               >
                 <div className="font-medium">
                   Replace {a.currentMaterial.materialName}
                 </div>
-                <div className="mt-1 text-slate-600">
+                <div className="mt-1 text-muted">
                   → {a.alternative.name} ({a.alternativeSupplier.name})
                 </div>
-                <p className="mt-2 text-slate-700">{a.explanation}</p>
+                <p className="mt-2 text-label">{a.explanation}</p>
                 <Button
                   className="mt-2"
                   type="button"

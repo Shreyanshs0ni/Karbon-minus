@@ -62,7 +62,7 @@ export function MaterialInput({
   return (
     <div className="space-y-4">
       <div>
-        <label className="block text-sm font-medium text-slate-700">
+        <label className="block text-sm font-medium text-label">
           Describe a material (natural language)
         </label>
         <div className="mt-1 flex flex-wrap gap-2">
@@ -83,21 +83,21 @@ export function MaterialInput({
       </div>
 
       {matches.length > 0 && (
-        <div className="rounded-lg border border-slate-200 bg-slate-50 p-3">
-          <div className="text-sm font-medium">Matches</div>
+        <div className="rounded-lg border border-border bg-panel p-3">
+          <div className="text-sm font-medium text-foreground">Matches</div>
           <ul className="mt-2 space-y-2">
             {matches.map((m) => (
               <li key={m.material.id}>
                 <button
                   type="button"
-                  className="w-full rounded border border-transparent px-2 py-2 text-left hover:border-emerald-300 hover:bg-white"
+                  className="w-full rounded border border-transparent px-2 py-2 text-left text-foreground hover:border-accent-border hover:bg-card"
                   onClick={() => {
                     setPicked(m.material);
                     setSupplierId(m.material.suppliers[0]?.id ?? "");
                   }}
                 >
                   <div className="font-medium">{m.material.name}</div>
-                  <div className="text-xs text-slate-600">
+                  <div className="text-xs text-muted">
                     {(m.confidenceScore * 100).toFixed(0)}% — {m.matchReason}
                   </div>
                 </button>
@@ -108,11 +108,11 @@ export function MaterialInput({
       )}
 
       {picked && (
-        <div className="rounded-lg border border-emerald-200 bg-emerald-50/50 p-4">
-          <div className="font-medium">{picked.name}</div>
+        <div className="rounded-lg border border-accent-border bg-accent-surface p-4">
+          <div className="font-medium text-foreground">{picked.name}</div>
           <div className="mt-3 grid gap-2 sm:grid-cols-2">
             <div>
-              <label className="text-xs text-slate-600">
+              <label className="text-xs text-muted">
                 Quantity ({picked.unit})
               </label>
               <Input
@@ -124,9 +124,9 @@ export function MaterialInput({
               />
             </div>
             <div>
-              <label className="text-xs text-slate-600">Supplier</label>
+              <label className="text-xs text-muted">Supplier</label>
               <select
-                className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"
+                className="mt-1 w-full rounded-lg border border-border bg-input-bg px-3 py-2 text-sm text-foreground"
                 value={supplierId}
                 onChange={(e) => setSupplierId(e.target.value)}
               >

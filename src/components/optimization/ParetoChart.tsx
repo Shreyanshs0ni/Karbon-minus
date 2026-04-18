@@ -22,6 +22,8 @@ type Row = {
   feasible: boolean;
 };
 
+const axisTick = { fill: "currentColor" };
+
 export function ParetoChart({
   combinations,
   paretoFrontier,
@@ -52,29 +54,43 @@ export function ParetoChart({
     }));
 
   return (
-    <div className="h-[420px] w-full">
+    <div className="h-[420px] w-full text-foreground">
       <ResponsiveContainer width="100%" height="100%">
         <ComposedChart
           data={rows}
           margin={{ top: 16, right: 24, bottom: 24, left: 24 }}
         >
-          <CartesianGrid strokeDasharray="3 3" className="opacity-40" />
+          <CartesianGrid
+            strokeDasharray="3 3"
+            stroke="var(--border)"
+            opacity={0.6}
+          />
           <XAxis
             type="number"
             dataKey="totalCost"
             name="Cost"
+            tick={axisTick}
+            stroke="var(--border-strong)"
             tickFormatter={(v) => `₹${(Number(v) / 1e6).toFixed(1)}M`}
-            label={{ value: "Total cost (INR)", position: "bottom", offset: 0 }}
+            label={{
+              value: "Total cost (INR)",
+              position: "bottom",
+              offset: 0,
+              fill: "var(--foreground)",
+            }}
           />
           <YAxis
             type="number"
             dataKey="totalCarbon"
             name="Carbon"
+            tick={axisTick}
+            stroke="var(--border-strong)"
             tickFormatter={(v) => `${(Number(v) / 1000).toFixed(0)}k`}
             label={{
               value: "Embodied carbon (kgCO₂e)",
               angle: -90,
               position: "insideLeft",
+              fill: "var(--foreground)",
             }}
           />
           <Tooltip
@@ -84,17 +100,17 @@ export function ParetoChart({
               const p = payload[0].payload as Row;
               const full = combinations.find((c) => c.id === p.id);
               return (
-                <div className="rounded-lg border border-slate-200 bg-white p-3 text-xs shadow-md">
+                <div className="rounded-lg border border-border bg-card p-3 text-xs text-foreground shadow-md">
                   <div className="font-medium">Combination {p.id}</div>
                   <div>{formatInr(p.totalCost)}</div>
                   <div>{formatKgCo2e(p.totalCarbon)}</div>
-                  <div className="mt-1 text-slate-500">
+                  <div className="mt-1 text-subtle">
                     {p.feasible ? "Feasible" : "Infeasible"}
                   </div>
                   {full && (
                     <button
                       type="button"
-                      className="mt-2 text-emerald-700 underline"
+                      className="mt-2 text-accent-muted underline"
                       onClick={() => onSelectCombination(full)}
                     >
                       Select shortlist
@@ -160,10 +176,10 @@ export function ParetoChart({
               label={{ value: "Selected", fill: "#dc2626" }}
             />
           )}
-          <Legend />
+          <Legend wrapperStyle={{ color: "var(--foreground)" }} />
         </ComposedChart>
       </ResponsiveContainer>
-      <p className="mt-2 text-center text-xs text-slate-500">
+      <p className="mt-2 text-center text-xs text-subtle">
         Click a point to select that combination as your procurement shortlist.
       </p>
     </div>

@@ -108,17 +108,19 @@ export default function OptimizePage() {
       <main className="mx-auto max-w-5xl px-4 py-10">
         <Link
           href={`/project/${id}`}
-          className="text-sm text-emerald-800 hover:underline"
+          className="text-sm text-accent hover:underline"
         >
           ← Dashboard
         </Link>
-        <h1 className="mt-4 text-2xl font-semibold">Optimization</h1>
-        <p className="mt-1 text-slate-600">
+        <h1 className="mt-4 text-2xl font-semibold text-foreground">
+          Optimization
+        </h1>
+        <p className="mt-1 text-muted">
           Enumerate supplier mixes and explore the Pareto frontier.
         </p>
 
         <Card className="mt-6">
-          <div className="flex flex-wrap items-center gap-4">
+          <div className="flex flex-wrap items-center gap-4 text-foreground">
             <Button
               type="button"
               disabled={loading || materials.length === 0}
@@ -127,16 +129,16 @@ export default function OptimizePage() {
               {loading ? "Running…" : "Run optimization"}
             </Button>
             {optimizationResult && (
-              <span className="text-sm text-slate-600">
+              <span className="text-sm text-muted">
                 {optimizationResult.totalCombinations} combinations ·{" "}
                 {optimizationResult.executionTimeMs.toFixed(0)} ms · Feasible:{" "}
                 {optimizationResult.feasibleCount}
               </span>
             )}
           </div>
-          {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
+          {error && <p className="mt-2 text-sm text-danger">{error}</p>}
           {optimizationResult?.infeasibleReason && (
-            <p className="mt-2 text-sm text-amber-800">
+            <p className="mt-2 text-sm text-amber-800 dark:text-amber-200">
               No feasible combination under both constraints. Closest options
               shown; tightest limit: {optimizationResult.infeasibleReason}.
             </p>
@@ -145,7 +147,9 @@ export default function OptimizePage() {
 
         {optimizationResult && (
           <Card className="mt-6">
-            <h2 className="text-lg font-medium">Cost vs carbon</h2>
+            <h2 className="text-lg font-medium text-foreground">
+              Cost vs carbon
+            </h2>
             <ParetoChart
               combinations={optimizationResult.combinations}
               paretoFrontier={optimizationResult.paretoFrontier}
@@ -155,13 +159,13 @@ export default function OptimizePage() {
               onSelectCombination={selectCombination}
             />
             {selectedCombination && (
-              <div className="mt-4 rounded border border-slate-200 p-4 text-sm">
+              <div className="mt-4 rounded border border-border p-4 text-sm text-foreground">
                 <div className="font-medium">Selected shortlist</div>
                 <div className="mt-2">
                   {formatInr(selectedCombination.totalCost)} ·{" "}
                   {formatKgCo2e(selectedCombination.totalCarbon)}
                 </div>
-                <ul className="mt-2 list-inside list-disc text-slate-600">
+                <ul className="mt-2 list-inside list-disc text-muted">
                   {selectedCombination.selections.map((s) => (
                     <li key={`${s.materialId}-${s.supplierId}`}>
                       {s.materialId}: {s.supplierName}
@@ -175,7 +179,9 @@ export default function OptimizePage() {
 
         {selectedCombination && (
           <Card className="mt-6">
-            <h2 className="text-lg font-medium">Negotiation brief</h2>
+            <h2 className="text-lg font-medium text-foreground">
+              Negotiation brief
+            </h2>
             <div className="mt-2 flex flex-wrap gap-2">
               {(["cost", "carbon", "balanced"] as const).map((p) => (
                 <Button
@@ -198,7 +204,7 @@ export default function OptimizePage() {
                 ).entries(),
               ).map(([sid, name]) => (
                 <div key={sid} className="flex flex-wrap items-center gap-2">
-                  <span className="text-sm">{name}</span>
+                  <span className="text-sm text-foreground">{name}</span>
                   <Button
                     type="button"
                     variant="secondary"
@@ -211,16 +217,14 @@ export default function OptimizePage() {
               ))}
             </div>
             {brief && (
-              <div className="mt-4 space-y-3 text-sm">
+              <div className="mt-4 space-y-3 text-sm text-foreground">
                 <h3 className="font-medium">{brief.supplierName}</h3>
-                <ul className="list-inside list-disc">
+                <ul className="list-inside list-disc text-muted">
                   {brief.talkingPoints.map((t, i) => (
                     <li key={i}>{t}</li>
                   ))}
                 </ul>
-                <p className="text-slate-600">
-                  {brief.volumeDiscountOpportunity}
-                </p>
+                <p className="text-muted">{brief.volumeDiscountOpportunity}</p>
                 <Button
                   type="button"
                   variant="secondary"

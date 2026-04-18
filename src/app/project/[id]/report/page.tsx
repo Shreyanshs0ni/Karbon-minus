@@ -126,18 +126,18 @@ export default function ReportPage() {
       <main className="mx-auto max-w-5xl px-4 py-10">
         <Link
           href={`/project/${id}`}
-          className="text-sm text-emerald-800 hover:underline"
+          className="text-sm text-accent hover:underline"
         >
           ← Dashboard
         </Link>
-        <h1 className="mt-4 text-2xl font-semibold">Report</h1>
+        <h1 className="mt-4 text-2xl font-semibold text-foreground">Report</h1>
 
         <Card className="mt-6">
-          <h2 className="text-lg font-medium">Summary</h2>
-          <p className="mt-2 text-slate-600">
+          <h2 className="text-lg font-medium text-foreground">Summary</h2>
+          <p className="mt-2 text-muted">
             {formatInr(totals.totalCost)} · {formatKgCo2e(totals.totalCarbon)}
           </p>
-          <p className="mt-2 text-sm text-slate-600">
+          <p className="mt-2 text-sm text-muted">
             Per m² ({totals.assumedArea} m² assumed):{" "}
             {formatInr(totals.costPerSqm)} · {totals.carbonPerSqm.toFixed(2)}{" "}
             kgCO₂e/m²
@@ -174,17 +174,19 @@ export default function ReportPage() {
             </Button>
           </div>
           {summary && (
-            <p className="mt-4 whitespace-pre-wrap text-sm text-slate-700">
+            <p className="mt-4 whitespace-pre-wrap text-sm text-label">
               {summary}
             </p>
           )}
         </Card>
 
         <Card className="mt-6">
-          <h2 className="text-lg font-medium">Carbon by category</h2>
-          <table className="mt-4 w-full text-sm">
+          <h2 className="text-lg font-medium text-foreground">
+            Carbon by category
+          </h2>
+          <table className="mt-4 w-full text-sm text-foreground">
             <thead>
-              <tr className="text-left text-slate-500">
+              <tr className="text-left text-subtle">
                 <th className="py-2">Category</th>
                 <th>Carbon</th>
                 <th>Share</th>
@@ -192,7 +194,7 @@ export default function ReportPage() {
             </thead>
             <tbody>
               {totals.categoryBreakdown.map((c) => (
-                <tr key={c.category} className="border-t border-slate-100">
+                <tr key={c.category} className="border-t border-divide">
                   <td className="py-2">{c.category}</td>
                   <td>{formatKgCo2e(c.carbon)}</td>
                   <td>{c.percentage.toFixed(1)}%</td>

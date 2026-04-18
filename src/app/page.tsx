@@ -16,10 +16,10 @@ export default function HomePage() {
       <main className="mx-auto max-w-5xl px-4 py-10">
         <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
           <div>
-            <h1 className="text-2xl font-semibold text-slate-900">
+            <h1 className="text-2xl font-semibold text-foreground">
               Embodied Carbon Negotiator
             </h1>
-            <p className="mt-1 text-slate-600">
+            <p className="mt-1 text-muted">
               Compare materials, optimize cost vs carbon, and brief suppliers.
             </p>
           </div>
@@ -34,13 +34,15 @@ export default function HomePage() {
         </div>
 
         <Card>
-          <h2 className="mb-4 text-lg font-medium">Your projects</h2>
+          <h2 className="mb-4 text-lg font-medium text-foreground">
+            Your projects
+          </h2>
           {projects.length === 0 ? (
-            <p className="text-slate-600">
+            <p className="text-muted">
               No projects yet. Create one or load the Bangalore demo.
             </p>
           ) : (
-            <ul className="divide-y divide-slate-100">
+            <ul className="divide-y divide-divide">
               {projects.map(({ project }) => (
                 <li
                   key={project.id}
@@ -49,11 +51,11 @@ export default function HomePage() {
                   <div>
                     <Link
                       href={`/project/${project.id}`}
-                      className="font-medium text-emerald-900 hover:underline"
+                      className="font-medium text-accent hover:underline"
                     >
                       {project.name}
                     </Link>
-                    <div className="mt-1 text-xs text-slate-500">
+                    <div className="mt-1 text-xs text-subtle">
                       Budget {formatKgCo2e(project.carbonBudget)} · Ceiling{" "}
                       {formatInr(project.costCeiling)}
                     </div>

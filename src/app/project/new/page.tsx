@@ -49,14 +49,14 @@ export default function NewProjectPage() {
     <>
       <Nav />
       <main className="mx-auto max-w-lg px-4 py-10">
-        <Link href="/" className="text-sm text-emerald-800 hover:underline">
+        <Link href="/" className="text-sm text-accent hover:underline">
           ← Back
         </Link>
         <Card className="mt-6">
-          <h1 className="text-xl font-semibold">New project</h1>
+          <h1 className="text-xl font-semibold text-foreground">New project</h1>
           <form onSubmit={submit} className="mt-6 space-y-4">
             <div>
-              <label className="block text-sm font-medium text-slate-700">
+              <label className="block text-sm font-medium text-label">
                 Project name
               </label>
               <Input
@@ -68,7 +68,7 @@ export default function NewProjectPage() {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-slate-700">
+              <label className="block text-sm font-medium text-label">
                 Carbon budget (kgCO₂e)
               </label>
               <Input
@@ -81,7 +81,7 @@ export default function NewProjectPage() {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-slate-700">
+              <label className="block text-sm font-medium text-label">
                 Cost ceiling (INR)
               </label>
               <Input
@@ -94,7 +94,7 @@ export default function NewProjectPage() {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-slate-700">
+              <label className="block text-sm font-medium text-label">
                 Assumed building area (m²)
               </label>
               <Input
@@ -105,11 +105,11 @@ export default function NewProjectPage() {
                 value={area}
                 onChange={(e) => setArea(e.target.value)}
               />
-              <p className="mt-1 text-xs text-slate-500">
+              <p className="mt-1 text-xs text-subtle">
                 Used for per-m² cost and carbon in reports.
               </p>
             </div>
-            {error && <p className="text-sm text-red-600">{error}</p>}
+            {error && <p className="text-sm text-danger">{error}</p>}
             <Button type="submit" className="w-full">
               Create project
             </Button>

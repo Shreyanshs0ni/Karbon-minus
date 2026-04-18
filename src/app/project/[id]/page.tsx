@@ -34,20 +34,20 @@ export default function ProjectDashboardPage() {
     <>
       <Nav projectId={id} />
       <main className="mx-auto max-w-5xl px-4 py-10">
-        <h1 className="text-2xl font-semibold">{project.name}</h1>
-        <p className="mt-1 text-slate-600">Procurement dashboard</p>
+        <h1 className="text-2xl font-semibold text-foreground">
+          {project.name}
+        </h1>
+        <p className="mt-1 text-muted">Procurement dashboard</p>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2">
           <Card>
-            <h2 className="text-sm font-medium text-slate-500">
-              Carbon budget
-            </h2>
+            <h2 className="text-sm font-medium text-subtle">Carbon budget</h2>
             <p className="mt-1 text-2xl font-semibold">
               {formatKgCo2e(project.carbonBudget)}
             </p>
           </Card>
           <Card>
-            <h2 className="text-sm font-medium text-slate-500">Cost ceiling</h2>
+            <h2 className="text-sm font-medium text-subtle">Cost ceiling</h2>
             <p className="mt-1 text-2xl font-semibold">
               {formatInr(project.costCeiling)}
             </p>
@@ -55,20 +55,24 @@ export default function ProjectDashboardPage() {
         </div>
 
         <Card className="mt-6">
-          <h2 className="text-lg font-medium">Current totals</h2>
-          <p className="mt-2 text-slate-600">
+          <h2 className="text-lg font-medium text-foreground">
+            Current totals
+          </h2>
+          <p className="mt-2 text-muted">
             Materials: {materials.length} line items
           </p>
           <div className="mt-4 grid gap-2 sm:grid-cols-2">
             <div>
-              <span className="text-sm text-slate-500">Total cost</span>
-              <div className="font-medium">{formatInr(totalCost)}</div>
+              <span className="text-sm text-subtle">Total cost</span>
+              <div className="font-medium text-foreground">
+                {formatInr(totalCost)}
+              </div>
             </div>
             <div>
-              <span className="text-sm text-slate-500">
-                Total embodied carbon
-              </span>
-              <div className="font-medium">{formatKgCo2e(totalCarbon)}</div>
+              <span className="text-sm text-subtle">Total embodied carbon</span>
+              <div className="font-medium text-foreground">
+                {formatKgCo2e(totalCarbon)}
+              </div>
             </div>
           </div>
           <div className="mt-6 flex flex-wrap gap-2">
