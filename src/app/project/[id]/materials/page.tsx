@@ -9,6 +9,7 @@ import { MaterialList } from "@/components/materials/MaterialList";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { useProject } from "@/context/ProjectContext";
+import { notifyInfo, notifySuccess } from "@/lib/toast";
 import { buildProjectMaterial } from "@/lib/materials";
 import type { AlternativeSuggestion, MaterialEntry } from "@/types";
 
@@ -84,7 +85,13 @@ export default function MaterialsPage() {
         <Card className="mt-6">
           <h2 className="text-lg font-medium text-foreground">Add with AI</h2>
           <MaterialInput
-            onAdd={addMaterial}
+            onAdd={(pm) => {
+              addMaterial(pm);
+              notifySuccess(
+                "Material added",
+                `${pm.materialName} added to project.`,
+              );
+            }}
             existingMaterialIds={materials.map((m) => m.materialId)}
           />
         </Card>
@@ -124,6 +131,10 @@ export default function MaterialsPage() {
                   onClick={() => {
                     const pm = buildProjectMaterial(m, 1000);
                     addMaterial(pm);
+                    notifySuccess(
+                      "Material added",
+                      `${m.name} added from database.`,
+                    );
                   }}
                 >
                   Add 1000 {m.unit}
@@ -139,7 +150,10 @@ export default function MaterialsPage() {
           </h2>
           <MaterialList
             materials={materials}
-            onRemove={removeMaterial}
+            onRemove={(lineId) => {
+              removeMaterial(lineId);
+              notifyInfo("Material removed");
+            }}
             onQuantityChange={updateMaterialQuantity}
           />
         </Card>
@@ -176,6 +190,10 @@ export default function MaterialsPage() {
                       a.currentMaterial.id,
                     );
                     replaceMaterialLine(a.currentMaterial.id, next);
+                    notifySuccess(
+                      "Material swapped",
+                      `${a.alternative.name} is now in the shortlist.`,
+                    );
                   }}
                 >
                   Swap in project

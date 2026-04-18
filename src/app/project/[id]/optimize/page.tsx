@@ -8,6 +8,7 @@ import { ParetoChart } from "@/components/optimization/ParetoChart";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { useProject } from "@/context/ProjectContext";
+import { notifyError, notifySuccess } from "@/lib/toast";
 import { formatInr, formatKgCo2e } from "@/lib/utils";
 import type { NegotiationBrief, OptimizationResult } from "@/types";
 
@@ -55,7 +56,9 @@ export default function OptimizePage() {
       });
       if (!res.ok) {
         const e = await res.json().catch(() => ({}));
-        setError(e.error ?? "Optimization failed");
+        const msg = e.error ?? "Optimization failed";
+        setError(msg);
+        notifyError("Optimization failed", msg);
         return;
       }
       const data = await res.json();
@@ -69,6 +72,10 @@ export default function OptimizePage() {
         infeasibleReason: data.infeasibleReason,
       };
       setOptimizationResult(result);
+      notifySuccess(
+        "Optimization complete",
+        `${result.feasibleCount} feasible combinations found.`,
+      );
     } finally {
       setLoading(false);
     }
@@ -77,20 +84,31 @@ export default function OptimizePage() {
   async function genBrief(supplierName: string, supplierId: string) {
     if (!selectedCombination) return;
     setBriefSupplier(supplierId);
-    const res = await fetch("/api/ai/negotiate", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        supplier: { id: supplierId, name: supplierName },
-        selectedMaterials: materials,
-        competitorData: [
-          { supplierName: "Market avg", avgCarbonIntensity: 1, avgPrice: 1 },
-        ],
-        priority,
-      }),
-    });
-    const data = await res.json();
-    setBrief(data.brief ?? null);
+    try {
+      const res = await fetch("/api/ai/negotiate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          supplier: { id: supplierId, name: supplierName },
+          selectedMaterials: materials,
+          competitorData: [
+            { supplierName: "Market avg", avgCarbonIntensity: 1, avgPrice: 1 },
+          ],
+          priority,
+        }),
+      });
+      if (!res.ok) throw new Error("Could not generate brief");
+      const data = await res.json();
+      setBrief(data.brief ?? null);
+      notifySuccess(
+        "Brief generated",
+        `Negotiation brief ready for ${supplierName}.`,
+      );
+    } catch {
+      notifyError("Failed to generate brief", "Please try again.");
+    } finally {
+      setBriefSupplier(null);
+    }
   }
 
   if (!project || project.id !== id) {
@@ -228,15 +246,22 @@ export default function OptimizePage() {
                 <Button
                   type="button"
                   variant="secondary"
-                  onClick={() =>
-                    void navigator.clipboard.writeText(
-                      [
-                        ...brief.talkingPoints,
-                        ...brief.strategies,
-                        ...brief.carbonImprovementSuggestions,
-                      ].join("\n"),
-                    )
-                  }
+                  onClick={() => {
+                    void (async () => {
+                      try {
+                        await navigator.clipboard.writeText(
+                          [
+                            ...brief.talkingPoints,
+                            ...brief.strategies,
+                            ...brief.carbonImprovementSuggestions,
+                          ].join("\n"),
+                        );
+                        notifySuccess("Brief copied to clipboard");
+                      } catch {
+                        notifyError("Could not copy brief");
+                      }
+                    })();
+                  }}
                 >
                   Copy brief
                 </Button>

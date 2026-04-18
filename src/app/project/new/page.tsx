@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Input } from "@/components/ui/Input";
 import { useProject } from "@/context/ProjectContext";
+import { notifySuccess } from "@/lib/toast";
 
 export default function NewProjectPage() {
   const router = useRouter();
@@ -42,6 +43,7 @@ export default function NewProjectPage() {
       costCeiling: cc,
       assumedBuildingArea: ar,
     });
+    notifySuccess("Project created", `${name.trim()} is ready.`);
     router.push(`/project/${id}`);
   }
 

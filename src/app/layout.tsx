@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { LeafBorder } from "@/components/LeafBorder";
+import { ToastifyHost } from "@/components/ToastifyHost";
 import { ProjectProvider } from "@/context/ProjectContext";
 import { ThemeProvider } from "@/context/ThemeContext";
 
@@ -37,6 +38,7 @@ export default function RootLayout({
         />
         <LeafBorder />
         <ThemeProvider>
+          <ToastifyHost />
           <ProjectProvider>
             <div className="relative z-10 min-h-screen">{children}</div>
           </ProjectProvider>

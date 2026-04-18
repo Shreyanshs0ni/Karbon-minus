@@ -14,6 +14,10 @@ import {
   saveActiveProjectId,
   saveProjects,
 } from "@/lib/storage";
+import {
+  AllDemosLoadedError,
+  collectUsedDemoTemplateIds,
+} from "@/lib/demo-templates";
 import type {
   MaterialCombination,
   OptimizationResult,
@@ -58,6 +62,7 @@ type Ctx = {
     assumedBuildingArea?: number;
   }) => string;
   loadProject: (id: string) => void;
+  deleteProject: (id: string) => void;
   setActiveProject: (id: string | null) => void;
   addMaterial: (m: ProjectMaterial) => void;
   removeMaterial: (lineId: string) => void;
@@ -66,7 +71,7 @@ type Ctx = {
   setOptimizationResult: (r: OptimizationResult | null) => void;
   selectCombination: (c: MaterialCombination | null) => void;
   updateProject: (patch: Partial<Project>) => void;
-  loadDemo: () => Promise<void>;
+  loadDemo: () => Promise<{ name: string }>;
 };
 
 const ProjectContext = createContext<Ctx | null>(null);
@@ -165,6 +170,20 @@ export function ProjectProvider({ children }: { children: React.ReactNode }) {
       patch: { activeProjectId: id },
     });
   }, []);
+
+  const deleteProject = useCallback(
+    (id: string) => {
+      const next = state.projects.filter((bundle) => bundle.project.id !== id);
+      const nextActiveId =
+        state.activeProjectId === id ? null : state.activeProjectId;
+      persist(next, nextActiveId);
+      dispatch({
+        type: "setState",
+        patch: { projects: next, activeProjectId: nextActiveId },
+      });
+    },
+    [state.projects, state.activeProjectId, persist],
+  );
 
   const setActiveProject = useCallback(
     (id: string | null) => {
@@ -271,20 +290,36 @@ export function ProjectProvider({ children }: { children: React.ReactNode }) {
   );
 
   const loadDemo = useCallback(async () => {
-    const res = await fetch("/api/demo");
+    const used = collectUsedDemoTemplateIds(state.projects);
+    const qs =
+      used.length > 0 ? `?exclude=${encodeURIComponent(used.join(","))}` : "";
+    const res = await fetch(`/api/demo${qs}`);
+    if (res.status === 404) {
+      const body = (await res.json().catch(() => ({}))) as {
+        error?: string;
+      };
+      if (body.error === "all_demos_used") throw new AllDemosLoadedError();
+      throw new Error("Demo load failed");
+    }
     if (!res.ok) throw new Error("Demo load failed");
     const data = (await res.json()) as {
       project: Project;
       materials: ProjectMaterial[];
+      demoTemplateId: string;
+    };
+    const now = new Date().toISOString();
+    const project: Project = {
+      ...data.project,
+      id: crypto.randomUUID(),
+      createdAt: now,
+      updatedAt: now,
+      demoTemplateId: data.demoTemplateId,
     };
     const bundle: StoredProjectBundle = {
-      project: data.project,
+      project,
       materials: data.materials,
     };
-    const others = state.projects.filter(
-      (p) => p.project.id !== bundle.project.id,
-    );
-    const next = [...others, bundle];
+    const next = [...state.projects, bundle];
     persist(next, bundle.project.id);
     dispatch({
       type: "setState",
@@ -293,6 +328,7 @@ export function ProjectProvider({ children }: { children: React.ReactNode }) {
         activeProjectId: bundle.project.id,
       },
     });
+    return { name: project.name };
   }, [state.projects, persist]);
 
   const value: Ctx = {
@@ -303,6 +339,7 @@ export function ProjectProvider({ children }: { children: React.ReactNode }) {
     projects: state.projects,
     createProject,
     loadProject,
+    deleteProject,
     setActiveProject,
     addMaterial,
     removeMaterial,

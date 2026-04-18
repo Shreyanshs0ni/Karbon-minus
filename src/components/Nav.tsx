@@ -4,7 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useProject } from "@/context/ProjectContext";
+import { AllDemosLoadedError } from "@/lib/demo-templates";
 import { useTheme } from "@/context/ThemeContext";
+import { notifyError, notifySuccess } from "@/lib/toast";
 import { cn } from "@/lib/utils";
 
 export function Nav({ projectId }: { projectId?: string }) {
@@ -68,7 +70,20 @@ export function Nav({ projectId }: { projectId?: string }) {
           {!projectId && (
             <button
               type="button"
-              onClick={() => void loadDemo()}
+              onClick={() => {
+                void (async () => {
+                  try {
+                    const { name } = await loadDemo();
+                    notifySuccess("Demo project loaded", name);
+                  } catch (e) {
+                    if (e instanceof AllDemosLoadedError) {
+                      notifyError("No new demos left", e.message);
+                    } else {
+                      notifyError("Could not load demo", "Please try again.");
+                    }
+                  }
+                })();
+              }}
               className="rounded border border-accent-border px-2 py-1 text-accent hover:bg-accent-bg-hover"
             >
               Load demo

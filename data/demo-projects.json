@@ -1,0 +1,180 @@
+{
+  "demos": [
+    {
+      "project": {
+        "id": "template-bangalore-10story",
+        "name": "10-Story Residential — Bangalore",
+        "carbonBudget": 500000,
+        "costCeiling": 50000000,
+        "assumedBuildingArea": 10000,
+        "createdAt": "2024-01-15T00:00:00.000Z",
+        "updatedAt": "2024-01-15T00:00:00.000Z"
+      },
+      "assumedBuildingArea": 10000,
+      "materials": [
+        {
+          "materialId": "steel-001",
+          "quantity": 150000,
+          "description": "Structural steel for framework"
+        },
+        {
+          "materialId": "cement-001",
+          "quantity": 2000000,
+          "description": "Portland cement for concrete"
+        },
+        {
+          "materialId": "glass-001",
+          "quantity": 8000,
+          "description": "Glass facades"
+        },
+        {
+          "materialId": "insulation-001",
+          "quantity": 12000,
+          "description": "Wall and roof insulation"
+        },
+        {
+          "materialId": "aggregates-001",
+          "quantity": 5000000,
+          "description": "Aggregates for concrete"
+        },
+        {
+          "materialId": "timber-001",
+          "quantity": 120,
+          "description": "Timber finishes"
+        }
+      ]
+    },
+    {
+      "project": {
+        "id": "template-mumbai-commercial",
+        "name": "Commercial Tower — Mumbai",
+        "carbonBudget": 720000,
+        "costCeiling": 78000000,
+        "assumedBuildingArea": 14500,
+        "createdAt": "2024-02-01T00:00:00.000Z",
+        "updatedAt": "2024-02-01T00:00:00.000Z"
+      },
+      "assumedBuildingArea": 14500,
+      "materials": [
+        {
+          "materialId": "steel-004",
+          "quantity": 220000,
+          "description": "High-rise structural steel"
+        },
+        {
+          "materialId": "cement-003",
+          "quantity": 2800000,
+          "description": "Blended cement for slabs"
+        },
+        {
+          "materialId": "glass-003",
+          "quantity": 14000,
+          "description": "Curtain wall glazing"
+        },
+        {
+          "materialId": "insulation-004",
+          "quantity": 18000,
+          "description": "Acoustic and thermal insulation"
+        },
+        {
+          "materialId": "aggregates-003",
+          "quantity": 6200000,
+          "description": "Structural concrete aggregates"
+        },
+        {
+          "materialId": "timber-003",
+          "quantity": 200,
+          "description": "Interior timber work"
+        }
+      ]
+    },
+    {
+      "project": {
+        "id": "template-hyderabad-midrise",
+        "name": "Mid-Rise Housing — Hyderabad",
+        "carbonBudget": 380000,
+        "costCeiling": 42000000,
+        "assumedBuildingArea": 7800,
+        "createdAt": "2024-02-20T00:00:00.000Z",
+        "updatedAt": "2024-02-20T00:00:00.000Z"
+      },
+      "assumedBuildingArea": 7800,
+      "materials": [
+        {
+          "materialId": "steel-007",
+          "quantity": 95000,
+          "description": "Mid-rise steel frame"
+        },
+        {
+          "materialId": "cement-005",
+          "quantity": 1400000,
+          "description": "Cement for foundations and walls"
+        },
+        {
+          "materialId": "glass-002",
+          "quantity": 5200,
+          "description": "Balcony and common-area glazing"
+        },
+        {
+          "materialId": "insulation-003",
+          "quantity": 9000,
+          "description": "Roof insulation"
+        },
+        {
+          "materialId": "aggregates-005",
+          "quantity": 3200000,
+          "description": "Concrete mix aggregates"
+        },
+        {
+          "materialId": "timber-002",
+          "quantity": 85,
+          "description": "Doors and trims"
+        }
+      ]
+    },
+    {
+      "project": {
+        "id": "template-pune-industrial",
+        "name": "Industrial Warehouse — Pune",
+        "carbonBudget": 210000,
+        "costCeiling": 28000000,
+        "assumedBuildingArea": 12000,
+        "createdAt": "2024-03-10T00:00:00.000Z",
+        "updatedAt": "2024-03-10T00:00:00.000Z"
+      },
+      "assumedBuildingArea": 12000,
+      "materials": [
+        {
+          "materialId": "steel-010",
+          "quantity": 180000,
+          "description": "Portal frame and cladding supports"
+        },
+        {
+          "materialId": "cement-002",
+          "quantity": 950000,
+          "description": "Floor slab and yard concrete"
+        },
+        {
+          "materialId": "glass-005",
+          "quantity": 2400,
+          "description": "Skylights and clerestory glass"
+        },
+        {
+          "materialId": "insulation-006",
+          "quantity": 22000,
+          "description": "Roof and wall insulation"
+        },
+        {
+          "materialId": "aggregates-007",
+          "quantity": 4100000,
+          "description": "Heavy-duty slab aggregates"
+        },
+        {
+          "materialId": "timber-005",
+          "quantity": 45,
+          "description": "Office fit-out timber"
+        }
+      ]
+    }
+  ]
+}

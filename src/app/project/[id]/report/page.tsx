@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { downloadProcurementPdf } from "@/components/report/ProcurementPDF";
 import { useProject } from "@/context/ProjectContext";
+import { notifyError, notifySuccess } from "@/lib/toast";
 import { formatInr, formatKgCo2e } from "@/lib/utils";
 
 export default function ReportPage() {
@@ -68,8 +69,12 @@ export default function ReportPage() {
           materialCount: materials.length,
         }),
       });
+      if (!res.ok) throw new Error("Summary generation failed");
       const data = await res.json();
       setSummary(data.executiveSummary ?? "");
+      notifySuccess("Executive summary generated");
+    } catch {
+      notifyError("Could not generate summary", "Please try again.");
     } finally {
       setLoading(false);
     }
@@ -109,6 +114,27 @@ export default function ReportPage() {
     a.download = `materials-${project.name.replace(/\s+/g, "-")}.csv`;
     a.click();
     URL.revokeObjectURL(url);
+    notifySuccess("CSV downloaded");
+  }
+
+  async function downloadPdf() {
+    if (!project) return;
+    try {
+      await downloadProcurementPdf({
+        project,
+        materials,
+        executiveSummary: summary || "Summary not generated yet.",
+        totalCost: totals.totalCost,
+        totalCarbon: totals.totalCarbon,
+        categoryBreakdown: totals.categoryBreakdown,
+        costPerSqm: totals.costPerSqm,
+        carbonPerSqm: totals.carbonPerSqm,
+        assumedArea: totals.assumedArea,
+      });
+      notifySuccess("PDF downloaded");
+    } catch {
+      notifyError("Could not download PDF");
+    }
   }
 
   if (!project || project.id !== id) {
@@ -153,19 +179,7 @@ export default function ReportPage() {
             <Button
               type="button"
               variant="secondary"
-              onClick={() =>
-                void downloadProcurementPdf({
-                  project,
-                  materials,
-                  executiveSummary: summary || "Summary not generated yet.",
-                  totalCost: totals.totalCost,
-                  totalCarbon: totals.totalCarbon,
-                  categoryBreakdown: totals.categoryBreakdown,
-                  costPerSqm: totals.costPerSqm,
-                  carbonPerSqm: totals.carbonPerSqm,
-                  assumedArea: totals.assumedArea,
-                })
-              }
+              onClick={() => void downloadPdf()}
             >
               Download PDF
             </Button>

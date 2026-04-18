@@ -37,6 +37,8 @@ export interface Project {
   carbonBudget: number;
   costCeiling: number;
   assumedBuildingArea?: number;
+  /** Set for projects created from a catalog demo; used to avoid loading the same template twice. */
+  demoTemplateId?: string;
   createdAt: string;
   updatedAt: string;
 }
