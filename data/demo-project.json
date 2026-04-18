@@ -1,0 +1,43 @@
+{
+  "project": {
+    "id": "demo-bangalore-10story",
+    "name": "10-Story Residential Building - Bangalore",
+    "carbonBudget": 500000,
+    "costCeiling": 50000000,
+    "assumedBuildingArea": 10000,
+    "createdAt": "2024-01-15T00:00:00.000Z",
+    "updatedAt": "2024-01-15T00:00:00.000Z"
+  },
+  "materials": [
+    {
+      "materialId": "steel-001",
+      "quantity": 150000,
+      "description": "Structural steel for framework"
+    },
+    {
+      "materialId": "cement-001",
+      "quantity": 2000000,
+      "description": "Portland cement for concrete"
+    },
+    {
+      "materialId": "glass-001",
+      "quantity": 8000,
+      "description": "Glass facades"
+    },
+    {
+      "materialId": "insulation-001",
+      "quantity": 12000,
+      "description": "Wall and roof insulation"
+    },
+    {
+      "materialId": "aggregates-001",
+      "quantity": 5000000,
+      "description": "Aggregates for concrete"
+    },
+    {
+      "materialId": "timber-001",
+      "quantity": 120,
+      "description": "Timber finishes"
+    }
+  ]
+}

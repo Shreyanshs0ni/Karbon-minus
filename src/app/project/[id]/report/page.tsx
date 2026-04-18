@@ -1,0 +1,207 @@
+"use client";
+
+import Link from "next/link";
+import { useParams } from "next/navigation";
+import { useEffect, useMemo, useState } from "react";
+import { Nav } from "@/components/Nav";
+import { Button } from "@/components/ui/Button";
+import { Card } from "@/components/ui/Card";
+import { downloadProcurementPdf } from "@/components/report/ProcurementPDF";
+import { useProject } from "@/context/ProjectContext";
+import { formatInr, formatKgCo2e } from "@/lib/utils";
+
+export default function ReportPage() {
+  const params = useParams();
+  const id = params.id as string;
+  const { project, materials, loadProject } = useProject();
+  const [summary, setSummary] = useState<string>("");
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (id && project?.id !== id) loadProject(id);
+  }, [id, project?.id, loadProject]);
+
+  const totals = useMemo(() => {
+    const totalCost = materials.reduce((a, m) => a + m.totalCost, 0);
+    const totalCarbon = materials.reduce((a, m) => a + m.totalCarbon, 0);
+    const byCat = new Map<string, { cost: number; carbon: number }>();
+    for (const m of materials) {
+      const cur = byCat.get(m.category) ?? { cost: 0, carbon: 0 };
+      cur.cost += m.totalCost;
+      cur.carbon += m.totalCarbon;
+      byCat.set(m.category, cur);
+    }
+    const categoryBreakdown = Array.from(byCat.entries()).map(
+      ([category, v]) => ({
+        category,
+        cost: v.cost,
+        carbon: v.carbon,
+        percentage: totalCarbon > 0 ? (100 * v.carbon) / totalCarbon : 0,
+      }),
+    );
+    const assumedArea = project?.assumedBuildingArea ?? 10000;
+    return {
+      totalCost,
+      totalCarbon,
+      categoryBreakdown,
+      costPerSqm: assumedArea > 0 ? totalCost / assumedArea : 0,
+      carbonPerSqm: assumedArea > 0 ? totalCarbon / assumedArea : 0,
+      assumedArea,
+    };
+  }, [materials, project?.assumedBuildingArea]);
+
+  async function genSummary() {
+    if (!project) return;
+    setLoading(true);
+    try {
+      const res = await fetch("/api/ai/summary", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          projectName: project.name,
+          carbonBudget: project.carbonBudget,
+          costCeiling: project.costCeiling,
+          totalCost: totals.totalCost,
+          totalCarbon: totals.totalCarbon,
+          costSavings: 0,
+          carbonSavings: 0,
+          materialCount: materials.length,
+        }),
+      });
+      const data = await res.json();
+      setSummary(data.executiveSummary ?? "");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  function downloadCsv() {
+    if (!project) return;
+    const header = [
+      "material",
+      "category",
+      "supplier",
+      "quantity",
+      "unit",
+      "unitPrice",
+      "embodiedCarbonPerUnit",
+      "totalCost",
+      "totalCarbon",
+    ];
+    const rows = materials.map((m) =>
+      [
+        m.materialName,
+        m.category,
+        m.supplierName,
+        m.quantity,
+        m.unit,
+        m.unitPrice,
+        m.embodiedCarbon,
+        m.totalCost,
+        m.totalCarbon,
+      ].join(","),
+    );
+    const csv = [header.join(","), ...rows].join("\n");
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `materials-${project.name.replace(/\s+/g, "-")}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  if (!project || project.id !== id) {
+    return (
+      <>
+        <Nav projectId={id} />
+        <main className="mx-auto max-w-5xl px-4 py-10">Loading…</main>
+      </>
+    );
+  }
+
+  return (
+    <>
+      <Nav projectId={id} />
+      <main className="mx-auto max-w-5xl px-4 py-10">
+        <Link
+          href={`/project/${id}`}
+          className="text-sm text-emerald-800 hover:underline"
+        >
+          ← Dashboard
+        </Link>
+        <h1 className="mt-4 text-2xl font-semibold">Report</h1>
+
+        <Card className="mt-6">
+          <h2 className="text-lg font-medium">Summary</h2>
+          <p className="mt-2 text-slate-600">
+            {formatInr(totals.totalCost)} · {formatKgCo2e(totals.totalCarbon)}
+          </p>
+          <p className="mt-2 text-sm text-slate-600">
+            Per m² ({totals.assumedArea} m² assumed):{" "}
+            {formatInr(totals.costPerSqm)} · {totals.carbonPerSqm.toFixed(2)}{" "}
+            kgCO₂e/m²
+          </p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            <Button
+              type="button"
+              disabled={loading}
+              onClick={() => void genSummary()}
+            >
+              {loading ? "…" : "Generate executive summary (AI)"}
+            </Button>
+            <Button
+              type="button"
+              variant="secondary"
+              onClick={() =>
+                void downloadProcurementPdf({
+                  project,
+                  materials,
+                  executiveSummary: summary || "Summary not generated yet.",
+                  totalCost: totals.totalCost,
+                  totalCarbon: totals.totalCarbon,
+                  categoryBreakdown: totals.categoryBreakdown,
+                  costPerSqm: totals.costPerSqm,
+                  carbonPerSqm: totals.carbonPerSqm,
+                  assumedArea: totals.assumedArea,
+                })
+              }
+            >
+              Download PDF
+            </Button>
+            <Button type="button" variant="secondary" onClick={downloadCsv}>
+              Download CSV
+            </Button>
+          </div>
+          {summary && (
+            <p className="mt-4 whitespace-pre-wrap text-sm text-slate-700">
+              {summary}
+            </p>
+          )}
+        </Card>
+
+        <Card className="mt-6">
+          <h2 className="text-lg font-medium">Carbon by category</h2>
+          <table className="mt-4 w-full text-sm">
+            <thead>
+              <tr className="text-left text-slate-500">
+                <th className="py-2">Category</th>
+                <th>Carbon</th>
+                <th>Share</th>
+              </tr>
+            </thead>
+            <tbody>
+              {totals.categoryBreakdown.map((c) => (
+                <tr key={c.category} className="border-t border-slate-100">
+                  <td className="py-2">{c.category}</td>
+                  <td>{formatKgCo2e(c.carbon)}</td>
+                  <td>{c.percentage.toFixed(1)}%</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </Card>
+      </main>
+    </>
+  );
+}

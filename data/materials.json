@@ -1,0 +1,3005 @@
+{
+  "materials": [
+    {
+      "id": "steel-001",
+      "name": "TMT Fe500D Rebar",
+      "category": "steel",
+      "unit": "kg",
+      "description": "TMT Fe500D Rebar for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-steel-001-1",
+          "name": "Tata Steel",
+          "unitPrice": 70,
+          "embodiedCarbon": 1.95,
+          "region": "Delhi NCR",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-steel-001-2",
+          "name": "Tata Steel",
+          "unitPrice": 69,
+          "embodiedCarbon": 1.94,
+          "region": "Mumbai",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-steel-001-3",
+          "name": "Tata Steel",
+          "unitPrice": 68,
+          "embodiedCarbon": 1.93,
+          "region": "Hyderabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-steel-001-4",
+          "name": "Tata Steel",
+          "unitPrice": 67,
+          "embodiedCarbon": 1.92,
+          "region": "Ahmedabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-steel-001-5",
+          "name": "Tata Steel",
+          "unitPrice": 66,
+          "embodiedCarbon": 1.91,
+          "region": "Delhi NCR",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "steel-002",
+      "name": "TMT Fe550D Rebar",
+      "category": "steel",
+      "unit": "kg",
+      "description": "TMT Fe550D Rebar for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-steel-002-1",
+          "name": "Jindal Panther",
+          "unitPrice": 64,
+          "embodiedCarbon": 2.44,
+          "region": "Bangalore",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 2.562,
+            "confidence": "low",
+            "referenceIds": [
+              "steel-ref-1",
+              "steel-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-steel-002-2",
+          "name": "Jindal Panther",
+          "unitPrice": 63,
+          "embodiedCarbon": 2.43,
+          "region": "Chennai",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 2.552,
+            "confidence": "medium",
+            "referenceIds": [
+              "steel-ref-1",
+              "steel-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-steel-002-3",
+          "name": "Jindal Panther",
+          "unitPrice": 62,
+          "embodiedCarbon": 2.42,
+          "region": "Kolkata",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 2.541,
+            "confidence": "high",
+            "referenceIds": [
+              "steel-ref-1",
+              "steel-ref-2"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "steel-003",
+      "name": "Structural Steel Section ISMB",
+      "category": "steel",
+      "unit": "kg",
+      "description": "Structural Steel Section ISMB for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-steel-003-1",
+          "name": "Essar Steel",
+          "unitPrice": 58,
+          "embodiedCarbon": 2.13,
+          "region": "Mumbai",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-steel-003-2",
+          "name": "Essar Steel",
+          "unitPrice": 57,
+          "embodiedCarbon": 2.12,
+          "region": "Hyderabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-steel-003-3",
+          "name": "Essar Steel",
+          "unitPrice": 56,
+          "embodiedCarbon": 2.11,
+          "region": "Ahmedabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-steel-003-4",
+          "name": "Essar Steel",
+          "unitPrice": 55,
+          "embodiedCarbon": 2.1,
+          "region": "Delhi NCR",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "steel-004",
+      "name": "Steel Wire Mesh",
+      "category": "steel",
+      "unit": "kg",
+      "description": "Steel Wire Mesh for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-steel-004-1",
+          "name": "SAIL",
+          "unitPrice": 77,
+          "embodiedCarbon": 1.82,
+          "region": "Chennai",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-steel-004-2",
+          "name": "SAIL",
+          "unitPrice": 76,
+          "embodiedCarbon": 1.81,
+          "region": "Kolkata",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-steel-004-3",
+          "name": "SAIL",
+          "unitPrice": 75,
+          "embodiedCarbon": 1.8,
+          "region": "Pune",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-steel-004-4",
+          "name": "SAIL",
+          "unitPrice": 74,
+          "embodiedCarbon": 2.59,
+          "region": "Bangalore",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-steel-004-5",
+          "name": "SAIL",
+          "unitPrice": 73,
+          "embodiedCarbon": 2.58,
+          "region": "Chennai",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "steel-005",
+      "name": "Galvanized Steel Sheet",
+      "category": "steel",
+      "unit": "kg",
+      "description": "Galvanized Steel Sheet for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-steel-005-1",
+          "name": "JSW Steel",
+          "unitPrice": 71,
+          "embodiedCarbon": 2.31,
+          "region": "Hyderabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-steel-005-2",
+          "name": "JSW Steel",
+          "unitPrice": 70,
+          "embodiedCarbon": 2.3,
+          "region": "Ahmedabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-steel-005-3",
+          "name": "JSW Steel",
+          "unitPrice": 69,
+          "embodiedCarbon": 2.29,
+          "region": "Delhi NCR",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "steel-006",
+      "name": "Steel Angles ISA",
+      "category": "steel",
+      "unit": "kg",
+      "description": "Steel Angles ISA for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-steel-006-1",
+          "name": "Tata Steel",
+          "unitPrice": 65,
+          "embodiedCarbon": 2,
+          "region": "Kolkata",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 2.1,
+            "confidence": "medium",
+            "referenceIds": [
+              "steel-ref-1",
+              "steel-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-steel-006-2",
+          "name": "Tata Steel",
+          "unitPrice": 64,
+          "embodiedCarbon": 1.99,
+          "region": "Pune",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 2.09,
+            "confidence": "high",
+            "referenceIds": [
+              "steel-ref-1",
+              "steel-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-steel-006-3",
+          "name": "Tata Steel",
+          "unitPrice": 63,
+          "embodiedCarbon": 1.98,
+          "region": "Bangalore",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 2.079,
+            "confidence": "low",
+            "referenceIds": [
+              "steel-ref-1",
+              "steel-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-steel-006-4",
+          "name": "Tata Steel",
+          "unitPrice": 62,
+          "embodiedCarbon": 1.97,
+          "region": "Chennai",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 2.069,
+            "confidence": "medium",
+            "referenceIds": [
+              "steel-ref-1",
+              "steel-ref-2"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "steel-007",
+      "name": "Steel Channels ISMC",
+      "category": "steel",
+      "unit": "kg",
+      "description": "Steel Channels ISMC for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-steel-007-1",
+          "name": "Jindal Panther",
+          "unitPrice": 59,
+          "embodiedCarbon": 2.49,
+          "region": "Ahmedabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-steel-007-2",
+          "name": "Jindal Panther",
+          "unitPrice": 58,
+          "embodiedCarbon": 2.48,
+          "region": "Delhi NCR",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-steel-007-3",
+          "name": "Jindal Panther",
+          "unitPrice": 57,
+          "embodiedCarbon": 2.47,
+          "region": "Mumbai",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-steel-007-4",
+          "name": "Jindal Panther",
+          "unitPrice": 56,
+          "embodiedCarbon": 2.46,
+          "region": "Hyderabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-steel-007-5",
+          "name": "Jindal Panther",
+          "unitPrice": 55,
+          "embodiedCarbon": 2.45,
+          "region": "Ahmedabad",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "steel-008",
+      "name": "Steel Plates HR",
+      "category": "steel",
+      "unit": "kg",
+      "description": "Steel Plates HR for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-steel-008-1",
+          "name": "Essar Steel",
+          "unitPrice": 78,
+          "embodiedCarbon": 2.18,
+          "region": "Pune",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-steel-008-2",
+          "name": "Essar Steel",
+          "unitPrice": 77,
+          "embodiedCarbon": 2.17,
+          "region": "Bangalore",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-steel-008-3",
+          "name": "Essar Steel",
+          "unitPrice": 76,
+          "embodiedCarbon": 2.16,
+          "region": "Chennai",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "steel-009",
+      "name": "Steel Round Bars",
+      "category": "steel",
+      "unit": "kg",
+      "description": "Steel Round Bars for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-steel-009-1",
+          "name": "SAIL",
+          "unitPrice": 72,
+          "embodiedCarbon": 1.87,
+          "region": "Delhi NCR",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-steel-009-2",
+          "name": "SAIL",
+          "unitPrice": 71,
+          "embodiedCarbon": 1.86,
+          "region": "Mumbai",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-steel-009-3",
+          "name": "SAIL",
+          "unitPrice": 70,
+          "embodiedCarbon": 1.85,
+          "region": "Hyderabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-steel-009-4",
+          "name": "SAIL",
+          "unitPrice": 69,
+          "embodiedCarbon": 1.84,
+          "region": "Ahmedabad",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "steel-010",
+      "name": "Steel Binding Wire",
+      "category": "steel",
+      "unit": "kg",
+      "description": "Steel Binding Wire for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-steel-010-1",
+          "name": "Tata Steel",
+          "unitPrice": 65,
+          "embodiedCarbon": 2.25,
+          "region": "Ahmedabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-steel-010-2",
+          "name": "Tata Steel",
+          "unitPrice": 64,
+          "embodiedCarbon": 2.24,
+          "region": "Delhi NCR",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-steel-010-3",
+          "name": "Tata Steel",
+          "unitPrice": 63,
+          "embodiedCarbon": 2.23,
+          "region": "Mumbai",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-steel-010-4",
+          "name": "Tata Steel",
+          "unitPrice": 62,
+          "embodiedCarbon": 2.22,
+          "region": "Hyderabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-steel-010-5",
+          "name": "Tata Steel",
+          "unitPrice": 61,
+          "embodiedCarbon": 2.21,
+          "region": "Ahmedabad",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "cement-001",
+      "name": "OPC 53 Grade Cement",
+      "category": "cement",
+      "unit": "kg",
+      "description": "OPC 53 Grade Cement for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-cement-001-1",
+          "name": "Ambuja Cements",
+          "unitPrice": 10,
+          "embodiedCarbon": 0.97,
+          "region": "Kolkata",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 1.019,
+            "confidence": "high",
+            "referenceIds": [
+              "cement-ref-1",
+              "cement-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-cement-001-2",
+          "name": "Ambuja Cements",
+          "unitPrice": 9,
+          "embodiedCarbon": 0.96,
+          "region": "Pune",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 1.008,
+            "confidence": "low",
+            "referenceIds": [
+              "cement-ref-1",
+              "cement-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-cement-001-3",
+          "name": "Ambuja Cements",
+          "unitPrice": 8,
+          "embodiedCarbon": 0.95,
+          "region": "Bangalore",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 0.997,
+            "confidence": "medium",
+            "referenceIds": [
+              "cement-ref-1",
+              "cement-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-cement-001-4",
+          "name": "Ambuja Cements",
+          "unitPrice": 7,
+          "embodiedCarbon": 0.94,
+          "region": "Chennai",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 0.987,
+            "confidence": "high",
+            "referenceIds": [
+              "cement-ref-1",
+              "cement-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-cement-001-5",
+          "name": "Ambuja Cements",
+          "unitPrice": 6,
+          "embodiedCarbon": 0.93,
+          "region": "Kolkata",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 0.976,
+            "confidence": "low",
+            "referenceIds": [
+              "cement-ref-1",
+              "cement-ref-2"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "cement-002",
+      "name": "PPC Cement",
+      "category": "cement",
+      "unit": "kg",
+      "description": "PPC Cement for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-cement-002-1",
+          "name": "ACC Limited",
+          "unitPrice": 11,
+          "embodiedCarbon": 0.96,
+          "region": "Ahmedabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-cement-002-2",
+          "name": "ACC Limited",
+          "unitPrice": 10,
+          "embodiedCarbon": 0.95,
+          "region": "Delhi NCR",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-cement-002-3",
+          "name": "ACC Limited",
+          "unitPrice": 9,
+          "embodiedCarbon": 0.94,
+          "region": "Mumbai",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-cement-002-4",
+          "name": "ACC Limited",
+          "unitPrice": 8,
+          "embodiedCarbon": 0.93,
+          "region": "Hyderabad",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "cement-003",
+      "name": "PSC Slag Cement",
+      "category": "cement",
+      "unit": "kg",
+      "description": "PSC Slag Cement for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-cement-003-1",
+          "name": "UltraTech Cement",
+          "unitPrice": 12,
+          "embodiedCarbon": 0.95,
+          "region": "Pune",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-cement-003-2",
+          "name": "UltraTech Cement",
+          "unitPrice": 11,
+          "embodiedCarbon": 0.94,
+          "region": "Bangalore",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-cement-003-3",
+          "name": "UltraTech Cement",
+          "unitPrice": 10,
+          "embodiedCarbon": 0.93,
+          "region": "Chennai",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "cement-004",
+      "name": "White Portland Cement",
+      "category": "cement",
+      "unit": "kg",
+      "description": "White Portland Cement for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-cement-004-1",
+          "name": "Shree Cement",
+          "unitPrice": 13,
+          "embodiedCarbon": 0.94,
+          "region": "Delhi NCR",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-cement-004-2",
+          "name": "Shree Cement",
+          "unitPrice": 12,
+          "embodiedCarbon": 0.93,
+          "region": "Mumbai",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-cement-004-3",
+          "name": "Shree Cement",
+          "unitPrice": 11,
+          "embodiedCarbon": 0.92,
+          "region": "Hyderabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-cement-004-4",
+          "name": "Shree Cement",
+          "unitPrice": 10,
+          "embodiedCarbon": 0.91,
+          "region": "Ahmedabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-cement-004-5",
+          "name": "Shree Cement",
+          "unitPrice": 9,
+          "embodiedCarbon": 0.9,
+          "region": "Delhi NCR",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "cement-005",
+      "name": "Rapid Hardening Cement",
+      "category": "cement",
+      "unit": "kg",
+      "description": "Rapid Hardening Cement for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-cement-005-1",
+          "name": "Dalmia Bharat",
+          "unitPrice": 6,
+          "embodiedCarbon": 0.93,
+          "region": "Bangalore",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 0.976,
+            "confidence": "low",
+            "referenceIds": [
+              "cement-ref-1",
+              "cement-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-cement-005-2",
+          "name": "Dalmia Bharat",
+          "unitPrice": 13,
+          "embodiedCarbon": 0.92,
+          "region": "Chennai",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 0.966,
+            "confidence": "medium",
+            "referenceIds": [
+              "cement-ref-1",
+              "cement-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-cement-005-3",
+          "name": "Dalmia Bharat",
+          "unitPrice": 12,
+          "embodiedCarbon": 0.91,
+          "region": "Kolkata",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 0.955,
+            "confidence": "high",
+            "referenceIds": [
+              "cement-ref-1",
+              "cement-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-cement-005-4",
+          "name": "Dalmia Bharat",
+          "unitPrice": 11,
+          "embodiedCarbon": 0.9,
+          "region": "Pune",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 0.945,
+            "confidence": "low",
+            "referenceIds": [
+              "cement-ref-1",
+              "cement-ref-2"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "cement-006",
+      "name": "Low-Alkali Cement",
+      "category": "cement",
+      "unit": "kg",
+      "description": "Low-Alkali Cement for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-cement-006-1",
+          "name": "Ambuja Cements",
+          "unitPrice": 7,
+          "embodiedCarbon": 0.92,
+          "region": "Mumbai",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-cement-006-2",
+          "name": "Ambuja Cements",
+          "unitPrice": 6,
+          "embodiedCarbon": 0.91,
+          "region": "Hyderabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-cement-006-3",
+          "name": "Ambuja Cements",
+          "unitPrice": 13,
+          "embodiedCarbon": 0.9,
+          "region": "Ahmedabad",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "cement-007",
+      "name": "Sulphate Resisting Cement",
+      "category": "cement",
+      "unit": "kg",
+      "description": "Sulphate Resisting Cement for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-cement-007-1",
+          "name": "ACC Limited",
+          "unitPrice": 8,
+          "embodiedCarbon": 0.91,
+          "region": "Chennai",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-cement-007-2",
+          "name": "ACC Limited",
+          "unitPrice": 7,
+          "embodiedCarbon": 0.9,
+          "region": "Kolkata",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-cement-007-3",
+          "name": "ACC Limited",
+          "unitPrice": 6,
+          "embodiedCarbon": 0.89,
+          "region": "Pune",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-cement-007-4",
+          "name": "ACC Limited",
+          "unitPrice": 13,
+          "embodiedCarbon": 0.88,
+          "region": "Bangalore",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-cement-007-5",
+          "name": "ACC Limited",
+          "unitPrice": 12,
+          "embodiedCarbon": 0.87,
+          "region": "Chennai",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "cement-008",
+      "name": "Fly Ash Blended Cement",
+      "category": "cement",
+      "unit": "kg",
+      "description": "Fly Ash Blended Cement for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-cement-008-1",
+          "name": "UltraTech Cement",
+          "unitPrice": 9,
+          "embodiedCarbon": 0.9,
+          "region": "Hyderabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-cement-008-2",
+          "name": "UltraTech Cement",
+          "unitPrice": 8,
+          "embodiedCarbon": 0.89,
+          "region": "Ahmedabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-cement-008-3",
+          "name": "UltraTech Cement",
+          "unitPrice": 7,
+          "embodiedCarbon": 0.88,
+          "region": "Delhi NCR",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-cement-008-4",
+          "name": "UltraTech Cement",
+          "unitPrice": 6,
+          "embodiedCarbon": 0.87,
+          "region": "Mumbai",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "cement-009",
+      "name": "Masonry Cement",
+      "category": "cement",
+      "unit": "kg",
+      "description": "Masonry Cement for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-cement-009-1",
+          "name": "Shree Cement",
+          "unitPrice": 10,
+          "embodiedCarbon": 0.89,
+          "region": "Kolkata",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 0.935,
+            "confidence": "medium",
+            "referenceIds": [
+              "cement-ref-1",
+              "cement-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-cement-009-2",
+          "name": "Shree Cement",
+          "unitPrice": 9,
+          "embodiedCarbon": 0.88,
+          "region": "Pune",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 0.924,
+            "confidence": "high",
+            "referenceIds": [
+              "cement-ref-1",
+              "cement-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-cement-009-3",
+          "name": "Shree Cement",
+          "unitPrice": 8,
+          "embodiedCarbon": 0.87,
+          "region": "Bangalore",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 0.914,
+            "confidence": "low",
+            "referenceIds": [
+              "cement-ref-1",
+              "cement-ref-2"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "cement-010",
+      "name": "Oil Well Cement",
+      "category": "cement",
+      "unit": "kg",
+      "description": "Oil Well Cement for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-cement-010-1",
+          "name": "Ambuja Cements",
+          "unitPrice": 8,
+          "embodiedCarbon": 0.97,
+          "region": "Chennai",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-cement-010-2",
+          "name": "Ambuja Cements",
+          "unitPrice": 7,
+          "embodiedCarbon": 0.96,
+          "region": "Kolkata",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-cement-010-3",
+          "name": "Ambuja Cements",
+          "unitPrice": 6,
+          "embodiedCarbon": 0.95,
+          "region": "Pune",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-cement-010-4",
+          "name": "Ambuja Cements",
+          "unitPrice": 13,
+          "embodiedCarbon": 0.94,
+          "region": "Bangalore",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-cement-010-5",
+          "name": "Ambuja Cements",
+          "unitPrice": 12,
+          "embodiedCarbon": 0.93,
+          "region": "Chennai",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "insulation-001",
+      "name": "Rockwool Batt Insulation",
+      "category": "insulation",
+      "unit": "m²",
+      "description": "Rockwool Batt Insulation for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-insulation-001-1",
+          "name": "Rockwool India",
+          "unitPrice": 1580,
+          "embodiedCarbon": 2.8,
+          "region": "Kolkata",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 2.94,
+            "confidence": "high",
+            "referenceIds": [
+              "insulation-ref-1",
+              "insulation-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-insulation-001-2",
+          "name": "Saint-Gobain ISOVER",
+          "unitPrice": 1581,
+          "embodiedCarbon": 2.81,
+          "region": "Bangalore",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-insulation-001-3",
+          "name": "HIL Limited",
+          "unitPrice": 1582,
+          "embodiedCarbon": 2.82,
+          "region": "Kolkata",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 2.961,
+            "confidence": "low",
+            "referenceIds": [
+              "insulation-ref-1",
+              "insulation-ref-2"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "insulation-002",
+      "name": "Glass Wool Roll",
+      "category": "insulation",
+      "unit": "m²",
+      "description": "Glass Wool Roll for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-insulation-002-1",
+          "name": "Owens Corning",
+          "unitPrice": 1611,
+          "embodiedCarbon": 2.11,
+          "region": "Hyderabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-insulation-002-2",
+          "name": "U.P. Twiga",
+          "unitPrice": 1612,
+          "embodiedCarbon": 2.12,
+          "region": "Delhi NCR",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-insulation-002-3",
+          "name": "Rockwool India",
+          "unitPrice": 1613,
+          "embodiedCarbon": 2.13,
+          "region": "Hyderabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-insulation-002-4",
+          "name": "Saint-Gobain ISOVER",
+          "unitPrice": 1614,
+          "embodiedCarbon": 2.14,
+          "region": "Delhi NCR",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "insulation-003",
+      "name": "XPS Board 50mm",
+      "category": "insulation",
+      "unit": "m²",
+      "description": "XPS Board 50mm for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-insulation-003-1",
+          "name": "Saint-Gobain ISOVER",
+          "unitPrice": 1642,
+          "embodiedCarbon": 2.42,
+          "region": "Chennai",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-insulation-003-2",
+          "name": "HIL Limited",
+          "unitPrice": 1643,
+          "embodiedCarbon": 2.43,
+          "region": "Pune",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 2.552,
+            "confidence": "high",
+            "referenceIds": [
+              "insulation-ref-1",
+              "insulation-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-insulation-003-3",
+          "name": "Owens Corning",
+          "unitPrice": 1644,
+          "embodiedCarbon": 2.44,
+          "region": "Chennai",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-insulation-003-4",
+          "name": "U.P. Twiga",
+          "unitPrice": 1645,
+          "embodiedCarbon": 2.45,
+          "region": "Pune",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 2.573,
+            "confidence": "low",
+            "referenceIds": [
+              "insulation-ref-1",
+              "insulation-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-insulation-003-5",
+          "name": "Rockwool India",
+          "unitPrice": 1646,
+          "embodiedCarbon": 2.46,
+          "region": "Chennai",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "insulation-004",
+      "name": "EPS Thermocol Board",
+      "category": "insulation",
+      "unit": "m²",
+      "description": "EPS Thermocol Board for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-insulation-004-1",
+          "name": "U.P. Twiga",
+          "unitPrice": 1673,
+          "embodiedCarbon": 2.73,
+          "region": "Mumbai",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-insulation-004-2",
+          "name": "Rockwool India",
+          "unitPrice": 1674,
+          "embodiedCarbon": 2.74,
+          "region": "Ahmedabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-insulation-004-3",
+          "name": "Saint-Gobain ISOVER",
+          "unitPrice": 1675,
+          "embodiedCarbon": 2.75,
+          "region": "Mumbai",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "insulation-005",
+      "name": "PIR Foam Board",
+      "category": "insulation",
+      "unit": "m²",
+      "description": "PIR Foam Board for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-insulation-005-1",
+          "name": "HIL Limited",
+          "unitPrice": 1704,
+          "embodiedCarbon": 2.04,
+          "region": "Bangalore",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 2.142,
+            "confidence": "medium",
+            "referenceIds": [
+              "insulation-ref-1",
+              "insulation-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-insulation-005-2",
+          "name": "Owens Corning",
+          "unitPrice": 1705,
+          "embodiedCarbon": 2.05,
+          "region": "Kolkata",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-insulation-005-3",
+          "name": "U.P. Twiga",
+          "unitPrice": 1706,
+          "embodiedCarbon": 2.06,
+          "region": "Bangalore",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 2.163,
+            "confidence": "high",
+            "referenceIds": [
+              "insulation-ref-1",
+              "insulation-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-insulation-005-4",
+          "name": "Rockwool India",
+          "unitPrice": 1707,
+          "embodiedCarbon": 2.07,
+          "region": "Kolkata",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "insulation-006",
+      "name": "Reflective Foil Insulation",
+      "category": "insulation",
+      "unit": "m²",
+      "description": "Reflective Foil Insulation for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-insulation-006-1",
+          "name": "Rockwool India",
+          "unitPrice": 1735,
+          "embodiedCarbon": 2.35,
+          "region": "Delhi NCR",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-insulation-006-2",
+          "name": "Saint-Gobain ISOVER",
+          "unitPrice": 1736,
+          "embodiedCarbon": 2.36,
+          "region": "Hyderabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-insulation-006-3",
+          "name": "HIL Limited",
+          "unitPrice": 1737,
+          "embodiedCarbon": 2.37,
+          "region": "Delhi NCR",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-insulation-006-4",
+          "name": "Owens Corning",
+          "unitPrice": 1738,
+          "embodiedCarbon": 2.38,
+          "region": "Hyderabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-insulation-006-5",
+          "name": "U.P. Twiga",
+          "unitPrice": 1739,
+          "embodiedCarbon": 2.39,
+          "region": "Delhi NCR",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "insulation-007",
+      "name": "Acoustic Mineral Wool",
+      "category": "insulation",
+      "unit": "m²",
+      "description": "Acoustic Mineral Wool for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-insulation-007-1",
+          "name": "Owens Corning",
+          "unitPrice": 1766,
+          "embodiedCarbon": 2.66,
+          "region": "Pune",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-insulation-007-2",
+          "name": "U.P. Twiga",
+          "unitPrice": 1767,
+          "embodiedCarbon": 2.67,
+          "region": "Chennai",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 2.804,
+            "confidence": "medium",
+            "referenceIds": [
+              "insulation-ref-1",
+              "insulation-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-insulation-007-3",
+          "name": "Rockwool India",
+          "unitPrice": 1768,
+          "embodiedCarbon": 2.68,
+          "region": "Pune",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "insulation-008",
+      "name": "Cork Board Insulation",
+      "category": "insulation",
+      "unit": "m²",
+      "description": "Cork Board Insulation for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-insulation-008-1",
+          "name": "Saint-Gobain ISOVER",
+          "unitPrice": 1797,
+          "embodiedCarbon": 2.97,
+          "region": "Ahmedabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-insulation-008-2",
+          "name": "HIL Limited",
+          "unitPrice": 1798,
+          "embodiedCarbon": 2.98,
+          "region": "Mumbai",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-insulation-008-3",
+          "name": "Owens Corning",
+          "unitPrice": 1799,
+          "embodiedCarbon": 2.99,
+          "region": "Ahmedabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-insulation-008-4",
+          "name": "U.P. Twiga",
+          "unitPrice": 1800,
+          "embodiedCarbon": 2,
+          "region": "Mumbai",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "insulation-009",
+      "name": "Sheep Wool Insulation",
+      "category": "insulation",
+      "unit": "m²",
+      "description": "Sheep Wool Insulation for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-insulation-009-1",
+          "name": "U.P. Twiga",
+          "unitPrice": 1828,
+          "embodiedCarbon": 2.28,
+          "region": "Kolkata",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 2.394,
+            "confidence": "low",
+            "referenceIds": [
+              "insulation-ref-1",
+              "insulation-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-insulation-009-2",
+          "name": "Rockwool India",
+          "unitPrice": 1829,
+          "embodiedCarbon": 2.29,
+          "region": "Bangalore",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-insulation-009-3",
+          "name": "Saint-Gobain ISOVER",
+          "unitPrice": 1830,
+          "embodiedCarbon": 2.3,
+          "region": "Kolkata",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 2.415,
+            "confidence": "medium",
+            "referenceIds": [
+              "insulation-ref-1",
+              "insulation-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-insulation-009-4",
+          "name": "HIL Limited",
+          "unitPrice": 1831,
+          "embodiedCarbon": 2.31,
+          "region": "Bangalore",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-insulation-009-5",
+          "name": "Owens Corning",
+          "unitPrice": 1832,
+          "embodiedCarbon": 2.32,
+          "region": "Kolkata",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 2.436,
+            "confidence": "high",
+            "referenceIds": [
+              "insulation-ref-1",
+              "insulation-ref-2"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "insulation-010",
+      "name": "Recycled Denim Batt",
+      "category": "insulation",
+      "unit": "m²",
+      "description": "Recycled Denim Batt for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-insulation-010-1",
+          "name": "Rockwool India",
+          "unitPrice": 1310,
+          "embodiedCarbon": 2.1,
+          "region": "Pune",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-insulation-010-2",
+          "name": "Saint-Gobain ISOVER",
+          "unitPrice": 1311,
+          "embodiedCarbon": 2.11,
+          "region": "Chennai",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 2.216,
+            "confidence": "medium",
+            "referenceIds": [
+              "insulation-ref-1",
+              "insulation-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-insulation-010-3",
+          "name": "HIL Limited",
+          "unitPrice": 1312,
+          "embodiedCarbon": 2.12,
+          "region": "Pune",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "glass-001",
+      "name": "Clear Float Glass 6mm",
+      "category": "glass",
+      "unit": "m²",
+      "description": "Clear Float Glass 6mm for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-glass-001-1",
+          "name": "Saint-Gobain Glass",
+          "unitPrice": 1280,
+          "embodiedCarbon": 28,
+          "region": "Bangalore",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 29.4,
+            "confidence": "high",
+            "referenceIds": [
+              "glass-ref-1",
+              "glass-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-glass-001-2",
+          "name": "Saint-Gobain Glass",
+          "unitPrice": 1279,
+          "embodiedCarbon": 27.9,
+          "region": "Chennai",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 29.295,
+            "confidence": "low",
+            "referenceIds": [
+              "glass-ref-1",
+              "glass-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-glass-001-3",
+          "name": "Saint-Gobain Glass",
+          "unitPrice": 1278,
+          "embodiedCarbon": 27.8,
+          "region": "Kolkata",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 29.19,
+            "confidence": "medium",
+            "referenceIds": [
+              "glass-ref-1",
+              "glass-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-glass-001-4",
+          "name": "Saint-Gobain Glass",
+          "unitPrice": 1277,
+          "embodiedCarbon": 27.7,
+          "region": "Pune",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 29.085,
+            "confidence": "high",
+            "referenceIds": [
+              "glass-ref-1",
+              "glass-ref-2"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "glass-002",
+      "name": "Low-E Double Glazed Unit",
+      "category": "glass",
+      "unit": "m²",
+      "description": "Low-E Double Glazed Unit for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-glass-002-1",
+          "name": "Hindusthan National Glass",
+          "unitPrice": 1249,
+          "embodiedCarbon": 39.9,
+          "region": "Mumbai",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-glass-002-2",
+          "name": "Hindusthan National Glass",
+          "unitPrice": 1248,
+          "embodiedCarbon": 39.8,
+          "region": "Hyderabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-glass-002-3",
+          "name": "Hindusthan National Glass",
+          "unitPrice": 1247,
+          "embodiedCarbon": 39.7,
+          "region": "Ahmedabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-glass-002-4",
+          "name": "Hindusthan National Glass",
+          "unitPrice": 1246,
+          "embodiedCarbon": 39.6,
+          "region": "Delhi NCR",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-glass-002-5",
+          "name": "Hindusthan National Glass",
+          "unitPrice": 1245,
+          "embodiedCarbon": 39.5,
+          "region": "Mumbai",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "glass-003",
+      "name": "Toughened Safety Glass",
+      "category": "glass",
+      "unit": "m²",
+      "description": "Toughened Safety Glass for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-glass-003-1",
+          "name": "Modiguard Glass",
+          "unitPrice": 1218,
+          "embodiedCarbon": 36.8,
+          "region": "Chennai",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-glass-003-2",
+          "name": "Modiguard Glass",
+          "unitPrice": 1217,
+          "embodiedCarbon": 36.7,
+          "region": "Kolkata",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-glass-003-3",
+          "name": "Modiguard Glass",
+          "unitPrice": 1216,
+          "embodiedCarbon": 36.6,
+          "region": "Pune",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "glass-004",
+      "name": "Laminated Glass",
+      "category": "glass",
+      "unit": "m²",
+      "description": "Laminated Glass for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-glass-004-1",
+          "name": "Gujarat Guardian",
+          "unitPrice": 1187,
+          "embodiedCarbon": 33.7,
+          "region": "Hyderabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-glass-004-2",
+          "name": "Gujarat Guardian",
+          "unitPrice": 1186,
+          "embodiedCarbon": 33.6,
+          "region": "Ahmedabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-glass-004-3",
+          "name": "Gujarat Guardian",
+          "unitPrice": 1185,
+          "embodiedCarbon": 33.5,
+          "region": "Delhi NCR",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-glass-004-4",
+          "name": "Gujarat Guardian",
+          "unitPrice": 1184,
+          "embodiedCarbon": 33.4,
+          "region": "Mumbai",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "glass-005",
+      "name": "Tinted Solar Glass",
+      "category": "glass",
+      "unit": "m²",
+      "description": "Tinted Solar Glass for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-glass-005-1",
+          "name": "Asahi India Glass",
+          "unitPrice": 1156,
+          "embodiedCarbon": 30.6,
+          "region": "Kolkata",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 32.13,
+            "confidence": "low",
+            "referenceIds": [
+              "glass-ref-1",
+              "glass-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-glass-005-2",
+          "name": "Asahi India Glass",
+          "unitPrice": 1155,
+          "embodiedCarbon": 30.5,
+          "region": "Pune",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 32.025,
+            "confidence": "medium",
+            "referenceIds": [
+              "glass-ref-1",
+              "glass-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-glass-005-3",
+          "name": "Asahi India Glass",
+          "unitPrice": 1154,
+          "embodiedCarbon": 30.4,
+          "region": "Bangalore",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 31.92,
+            "confidence": "high",
+            "referenceIds": [
+              "glass-ref-1",
+              "glass-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-glass-005-4",
+          "name": "Asahi India Glass",
+          "unitPrice": 1153,
+          "embodiedCarbon": 30.3,
+          "region": "Chennai",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 31.815,
+            "confidence": "low",
+            "referenceIds": [
+              "glass-ref-1",
+              "glass-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-glass-005-5",
+          "name": "Asahi India Glass",
+          "unitPrice": 1152,
+          "embodiedCarbon": 30.2,
+          "region": "Kolkata",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 31.71,
+            "confidence": "medium",
+            "referenceIds": [
+              "glass-ref-1",
+              "glass-ref-2"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "glass-006",
+      "name": "Acoustic Laminated Glass",
+      "category": "glass",
+      "unit": "m²",
+      "description": "Acoustic Laminated Glass for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-glass-006-1",
+          "name": "Saint-Gobain Glass",
+          "unitPrice": 1125,
+          "embodiedCarbon": 27.5,
+          "region": "Ahmedabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-glass-006-2",
+          "name": "Saint-Gobain Glass",
+          "unitPrice": 1124,
+          "embodiedCarbon": 27.4,
+          "region": "Delhi NCR",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-glass-006-3",
+          "name": "Saint-Gobain Glass",
+          "unitPrice": 1123,
+          "embodiedCarbon": 27.3,
+          "region": "Mumbai",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "glass-007",
+      "name": "Frosted Privacy Glass",
+      "category": "glass",
+      "unit": "m²",
+      "description": "Frosted Privacy Glass for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-glass-007-1",
+          "name": "Hindusthan National Glass",
+          "unitPrice": 1094,
+          "embodiedCarbon": 39.4,
+          "region": "Pune",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-glass-007-2",
+          "name": "Hindusthan National Glass",
+          "unitPrice": 1093,
+          "embodiedCarbon": 39.3,
+          "region": "Bangalore",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-glass-007-3",
+          "name": "Hindusthan National Glass",
+          "unitPrice": 1092,
+          "embodiedCarbon": 39.2,
+          "region": "Chennai",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-glass-007-4",
+          "name": "Hindusthan National Glass",
+          "unitPrice": 1091,
+          "embodiedCarbon": 39.1,
+          "region": "Kolkata",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "glass-008",
+      "name": "Spandrel Ceramic Glass",
+      "category": "glass",
+      "unit": "m²",
+      "description": "Spandrel Ceramic Glass for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-glass-008-1",
+          "name": "Modiguard Glass",
+          "unitPrice": 1063,
+          "embodiedCarbon": 36.3,
+          "region": "Delhi NCR",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-glass-008-2",
+          "name": "Modiguard Glass",
+          "unitPrice": 1062,
+          "embodiedCarbon": 36.2,
+          "region": "Mumbai",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-glass-008-3",
+          "name": "Modiguard Glass",
+          "unitPrice": 1061,
+          "embodiedCarbon": 36.1,
+          "region": "Hyderabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-glass-008-4",
+          "name": "Modiguard Glass",
+          "unitPrice": 1060,
+          "embodiedCarbon": 36,
+          "region": "Ahmedabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-glass-008-5",
+          "name": "Modiguard Glass",
+          "unitPrice": 1059,
+          "embodiedCarbon": 35.9,
+          "region": "Delhi NCR",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "glass-009",
+      "name": "Fire-Rated Glass",
+      "category": "glass",
+      "unit": "m²",
+      "description": "Fire-Rated Glass for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-glass-009-1",
+          "name": "Gujarat Guardian",
+          "unitPrice": 1032,
+          "embodiedCarbon": 33.2,
+          "region": "Bangalore",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 34.86,
+            "confidence": "medium",
+            "referenceIds": [
+              "glass-ref-1",
+              "glass-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-glass-009-2",
+          "name": "Gujarat Guardian",
+          "unitPrice": 1031,
+          "embodiedCarbon": 33.1,
+          "region": "Chennai",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 34.755,
+            "confidence": "high",
+            "referenceIds": [
+              "glass-ref-1",
+              "glass-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-glass-009-3",
+          "name": "Gujarat Guardian",
+          "unitPrice": 1030,
+          "embodiedCarbon": 33,
+          "region": "Kolkata",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 34.65,
+            "confidence": "low",
+            "referenceIds": [
+              "glass-ref-1",
+              "glass-ref-2"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "glass-010",
+      "name": "Structural Glazing Panel",
+      "category": "glass",
+      "unit": "m²",
+      "description": "Structural Glazing Panel for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-glass-010-1",
+          "name": "Saint-Gobain Glass",
+          "unitPrice": 1550,
+          "embodiedCarbon": 25,
+          "region": "Pune",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-glass-010-2",
+          "name": "Saint-Gobain Glass",
+          "unitPrice": 1549,
+          "embodiedCarbon": 39.9,
+          "region": "Bangalore",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-glass-010-3",
+          "name": "Saint-Gobain Glass",
+          "unitPrice": 1548,
+          "embodiedCarbon": 39.8,
+          "region": "Chennai",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-glass-010-4",
+          "name": "Saint-Gobain Glass",
+          "unitPrice": 1547,
+          "embodiedCarbon": 39.7,
+          "region": "Kolkata",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "aggregates-001",
+      "name": "Crushed Stone 20mm",
+      "category": "aggregates",
+      "unit": "kg",
+      "description": "Crushed Stone 20mm for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-aggregates-001-1",
+          "name": "NCC Aggregates",
+          "unitPrice": 1.48,
+          "embodiedCarbon": 0.028,
+          "region": "Bangalore",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 0.029,
+            "confidence": "low",
+            "referenceIds": [
+              "aggregates-ref-1",
+              "aggregates-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-aggregates-001-2",
+          "name": "Lafarge Aggregates",
+          "unitPrice": 1.49,
+          "embodiedCarbon": 0.029,
+          "region": "Kolkata",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-aggregates-001-3",
+          "name": "Thriveni Sands",
+          "unitPrice": 1.5,
+          "embodiedCarbon": 0.03,
+          "region": "Bangalore",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 0.032,
+            "confidence": "medium",
+            "referenceIds": [
+              "aggregates-ref-1",
+              "aggregates-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-aggregates-001-4",
+          "name": "UltraTech ReadyMix",
+          "unitPrice": 1.51,
+          "embodiedCarbon": 0.031,
+          "region": "Kolkata",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-aggregates-001-5",
+          "name": "Robo Silicon",
+          "unitPrice": 1.52,
+          "embodiedCarbon": 0.032,
+          "region": "Bangalore",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 0.034,
+            "confidence": "high",
+            "referenceIds": [
+              "aggregates-ref-1",
+              "aggregates-ref-2"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "aggregates-002",
+      "name": "River Sand Fine",
+      "category": "aggregates",
+      "unit": "kg",
+      "description": "River Sand Fine for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-aggregates-002-1",
+          "name": "UltraTech ReadyMix",
+          "unitPrice": 1.79,
+          "embodiedCarbon": 0.029,
+          "region": "Delhi NCR",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-aggregates-002-2",
+          "name": "Robo Silicon",
+          "unitPrice": 0.8,
+          "embodiedCarbon": 0.03,
+          "region": "Hyderabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-aggregates-002-3",
+          "name": "NCC Aggregates",
+          "unitPrice": 0.81,
+          "embodiedCarbon": 0.031,
+          "region": "Delhi NCR",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "aggregates-003",
+      "name": "M-Sand Manufactured",
+      "category": "aggregates",
+      "unit": "kg",
+      "description": "M-Sand Manufactured for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-aggregates-003-1",
+          "name": "Lafarge Aggregates",
+          "unitPrice": 1.1,
+          "embodiedCarbon": 0.03,
+          "region": "Pune",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-aggregates-003-2",
+          "name": "Thriveni Sands",
+          "unitPrice": 1.11,
+          "embodiedCarbon": 0.031,
+          "region": "Chennai",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 0.033,
+            "confidence": "low",
+            "referenceIds": [
+              "aggregates-ref-1",
+              "aggregates-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-aggregates-003-3",
+          "name": "UltraTech ReadyMix",
+          "unitPrice": 1.12,
+          "embodiedCarbon": 0.032,
+          "region": "Pune",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-aggregates-003-4",
+          "name": "Robo Silicon",
+          "unitPrice": 1.13,
+          "embodiedCarbon": 0.033,
+          "region": "Chennai",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 0.035,
+            "confidence": "medium",
+            "referenceIds": [
+              "aggregates-ref-1",
+              "aggregates-ref-2"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "aggregates-004",
+      "name": "Fly Ash Aggregate",
+      "category": "aggregates",
+      "unit": "kg",
+      "description": "Fly Ash Aggregate for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-aggregates-004-1",
+          "name": "Robo Silicon",
+          "unitPrice": 1.41,
+          "embodiedCarbon": 0.031,
+          "region": "Ahmedabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-aggregates-004-2",
+          "name": "NCC Aggregates",
+          "unitPrice": 1.42,
+          "embodiedCarbon": 0.032,
+          "region": "Mumbai",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-aggregates-004-3",
+          "name": "Lafarge Aggregates",
+          "unitPrice": 1.43,
+          "embodiedCarbon": 0.033,
+          "region": "Ahmedabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-aggregates-004-4",
+          "name": "Thriveni Sands",
+          "unitPrice": 1.44,
+          "embodiedCarbon": 0.034,
+          "region": "Mumbai",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-aggregates-004-5",
+          "name": "UltraTech ReadyMix",
+          "unitPrice": 1.45,
+          "embodiedCarbon": 0.02,
+          "region": "Ahmedabad",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "aggregates-005",
+      "name": "Recycled Concrete Aggregate",
+      "category": "aggregates",
+      "unit": "kg",
+      "description": "Recycled Concrete Aggregate for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-aggregates-005-1",
+          "name": "Thriveni Sands",
+          "unitPrice": 1.72,
+          "embodiedCarbon": 0.032,
+          "region": "Kolkata",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 0.034,
+            "confidence": "high",
+            "referenceIds": [
+              "aggregates-ref-1",
+              "aggregates-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-aggregates-005-2",
+          "name": "UltraTech ReadyMix",
+          "unitPrice": 1.73,
+          "embodiedCarbon": 0.033,
+          "region": "Bangalore",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-aggregates-005-3",
+          "name": "Robo Silicon",
+          "unitPrice": 1.74,
+          "embodiedCarbon": 0.034,
+          "region": "Kolkata",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 0.036,
+            "confidence": "low",
+            "referenceIds": [
+              "aggregates-ref-1",
+              "aggregates-ref-2"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "aggregates-006",
+      "name": "Granite Chips 10mm",
+      "category": "aggregates",
+      "unit": "kg",
+      "description": "Granite Chips 10mm for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-aggregates-006-1",
+          "name": "NCC Aggregates",
+          "unitPrice": 1.03,
+          "embodiedCarbon": 0.033,
+          "region": "Hyderabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-aggregates-006-2",
+          "name": "Lafarge Aggregates",
+          "unitPrice": 1.04,
+          "embodiedCarbon": 0.034,
+          "region": "Delhi NCR",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-aggregates-006-3",
+          "name": "Thriveni Sands",
+          "unitPrice": 1.05,
+          "embodiedCarbon": 0.02,
+          "region": "Hyderabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-aggregates-006-4",
+          "name": "UltraTech ReadyMix",
+          "unitPrice": 1.06,
+          "embodiedCarbon": 0.021,
+          "region": "Delhi NCR",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "aggregates-007",
+      "name": "Ballast Stone",
+      "category": "aggregates",
+      "unit": "kg",
+      "description": "Ballast Stone for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-aggregates-007-1",
+          "name": "UltraTech ReadyMix",
+          "unitPrice": 1.34,
+          "embodiedCarbon": 0.034,
+          "region": "Chennai",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-aggregates-007-2",
+          "name": "Robo Silicon",
+          "unitPrice": 1.35,
+          "embodiedCarbon": 0.02,
+          "region": "Pune",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 0.021,
+            "confidence": "high",
+            "referenceIds": [
+              "aggregates-ref-1",
+              "aggregates-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-aggregates-007-3",
+          "name": "NCC Aggregates",
+          "unitPrice": 1.36,
+          "embodiedCarbon": 0.021,
+          "region": "Chennai",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-aggregates-007-4",
+          "name": "Lafarge Aggregates",
+          "unitPrice": 1.37,
+          "embodiedCarbon": 0.022,
+          "region": "Pune",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 0.023,
+            "confidence": "low",
+            "referenceIds": [
+              "aggregates-ref-1",
+              "aggregates-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-aggregates-007-5",
+          "name": "Thriveni Sands",
+          "unitPrice": 1.38,
+          "embodiedCarbon": 0.023,
+          "region": "Chennai",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "aggregates-008",
+      "name": "Dolomite Chips",
+      "category": "aggregates",
+      "unit": "kg",
+      "description": "Dolomite Chips for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-aggregates-008-1",
+          "name": "Lafarge Aggregates",
+          "unitPrice": 1.65,
+          "embodiedCarbon": 0.02,
+          "region": "Mumbai",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-aggregates-008-2",
+          "name": "Thriveni Sands",
+          "unitPrice": 1.66,
+          "embodiedCarbon": 0.021,
+          "region": "Ahmedabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-aggregates-008-3",
+          "name": "UltraTech ReadyMix",
+          "unitPrice": 1.67,
+          "embodiedCarbon": 0.022,
+          "region": "Mumbai",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "aggregates-009",
+      "name": "Laterite Gravel",
+      "category": "aggregates",
+      "unit": "kg",
+      "description": "Laterite Gravel for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-aggregates-009-1",
+          "name": "Robo Silicon",
+          "unitPrice": 0.96,
+          "embodiedCarbon": 0.021,
+          "region": "Bangalore",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 0.022,
+            "confidence": "medium",
+            "referenceIds": [
+              "aggregates-ref-1",
+              "aggregates-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-aggregates-009-2",
+          "name": "NCC Aggregates",
+          "unitPrice": 0.97,
+          "embodiedCarbon": 0.022,
+          "region": "Kolkata",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-aggregates-009-3",
+          "name": "Lafarge Aggregates",
+          "unitPrice": 0.98,
+          "embodiedCarbon": 0.023,
+          "region": "Bangalore",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 0.024,
+            "confidence": "high",
+            "referenceIds": [
+              "aggregates-ref-1",
+              "aggregates-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-aggregates-009-4",
+          "name": "Thriveni Sands",
+          "unitPrice": 0.99,
+          "embodiedCarbon": 0.024,
+          "region": "Kolkata",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "aggregates-010",
+      "name": "Quarry Dust",
+      "category": "aggregates",
+      "unit": "kg",
+      "description": "Quarry Dust for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-aggregates-010-1",
+          "name": "NCC Aggregates",
+          "unitPrice": 1.78,
+          "embodiedCarbon": 0.028,
+          "region": "Chennai",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-aggregates-010-2",
+          "name": "Lafarge Aggregates",
+          "unitPrice": 1.79,
+          "embodiedCarbon": 0.029,
+          "region": "Pune",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 0.03,
+            "confidence": "high",
+            "referenceIds": [
+              "aggregates-ref-1",
+              "aggregates-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-aggregates-010-3",
+          "name": "Thriveni Sands",
+          "unitPrice": 0.8,
+          "embodiedCarbon": 0.03,
+          "region": "Chennai",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-aggregates-010-4",
+          "name": "UltraTech ReadyMix",
+          "unitPrice": 0.81,
+          "embodiedCarbon": 0.031,
+          "region": "Pune",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 0.033,
+            "confidence": "low",
+            "referenceIds": [
+              "aggregates-ref-1",
+              "aggregates-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-aggregates-010-5",
+          "name": "Robo Silicon",
+          "unitPrice": 0.82,
+          "embodiedCarbon": 0.032,
+          "region": "Chennai",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "timber-001",
+      "name": "Teak Wood Planks",
+      "category": "timber",
+      "unit": "m³",
+      "description": "Teak Wood Planks for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-timber-001-1",
+          "name": "Greenply Industries",
+          "unitPrice": 54045,
+          "embodiedCarbon": 185,
+          "region": "Ahmedabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-timber-001-2",
+          "name": "Century Plyboards",
+          "unitPrice": 54046,
+          "embodiedCarbon": 186,
+          "region": "Mumbai",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-timber-001-3",
+          "name": "Archidply",
+          "unitPrice": 54047,
+          "embodiedCarbon": 187,
+          "region": "Ahmedabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-timber-001-4",
+          "name": "Kitply Industries",
+          "unitPrice": 54048,
+          "embodiedCarbon": 188,
+          "region": "Mumbai",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-timber-001-5",
+          "name": "Merino Industries",
+          "unitPrice": 54049,
+          "embodiedCarbon": 189,
+          "region": "Ahmedabad",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "timber-002",
+      "name": "Sal Wood Beams",
+      "category": "timber",
+      "unit": "m³",
+      "description": "Sal Wood Beams for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-timber-002-1",
+          "name": "Kitply Industries",
+          "unitPrice": 54076,
+          "embodiedCarbon": 216,
+          "region": "Kolkata",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 226.8,
+            "confidence": "high",
+            "referenceIds": [
+              "timber-ref-1",
+              "timber-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-timber-002-2",
+          "name": "Merino Industries",
+          "unitPrice": 54077,
+          "embodiedCarbon": 217,
+          "region": "Bangalore",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-timber-002-3",
+          "name": "Greenply Industries",
+          "unitPrice": 54078,
+          "embodiedCarbon": 218,
+          "region": "Kolkata",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 228.9,
+            "confidence": "low",
+            "referenceIds": [
+              "timber-ref-1",
+              "timber-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-timber-002-4",
+          "name": "Century Plyboards",
+          "unitPrice": 54079,
+          "embodiedCarbon": 219,
+          "region": "Bangalore",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "timber-003",
+      "name": "Pine Plywood BWR",
+      "category": "timber",
+      "unit": "m³",
+      "description": "Pine Plywood BWR for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-timber-003-1",
+          "name": "Century Plyboards",
+          "unitPrice": 54107,
+          "embodiedCarbon": 247,
+          "region": "Hyderabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-timber-003-2",
+          "name": "Archidply",
+          "unitPrice": 54108,
+          "embodiedCarbon": 248,
+          "region": "Delhi NCR",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-timber-003-3",
+          "name": "Kitply Industries",
+          "unitPrice": 54109,
+          "embodiedCarbon": 249,
+          "region": "Hyderabad",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "timber-004",
+      "name": "MDF Board 18mm",
+      "category": "timber",
+      "unit": "m³",
+      "description": "MDF Board 18mm for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-timber-004-1",
+          "name": "Merino Industries",
+          "unitPrice": 54138,
+          "embodiedCarbon": 198,
+          "region": "Chennai",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-timber-004-2",
+          "name": "Greenply Industries",
+          "unitPrice": 54139,
+          "embodiedCarbon": 199,
+          "region": "Pune",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 208.95,
+            "confidence": "high",
+            "referenceIds": [
+              "timber-ref-1",
+              "timber-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-timber-004-3",
+          "name": "Century Plyboards",
+          "unitPrice": 54140,
+          "embodiedCarbon": 200,
+          "region": "Chennai",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-timber-004-4",
+          "name": "Archidply",
+          "unitPrice": 54141,
+          "embodiedCarbon": 201,
+          "region": "Pune",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 211.05,
+            "confidence": "low",
+            "referenceIds": [
+              "timber-ref-1",
+              "timber-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-timber-004-5",
+          "name": "Kitply Industries",
+          "unitPrice": 54142,
+          "embodiedCarbon": 202,
+          "region": "Chennai",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "timber-005",
+      "name": "Hardwood Flooring Oak",
+      "category": "timber",
+      "unit": "m³",
+      "description": "Hardwood Flooring Oak for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-timber-005-1",
+          "name": "Archidply",
+          "unitPrice": 54169,
+          "embodiedCarbon": 229,
+          "region": "Mumbai",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-timber-005-2",
+          "name": "Kitply Industries",
+          "unitPrice": 54170,
+          "embodiedCarbon": 230,
+          "region": "Ahmedabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-timber-005-3",
+          "name": "Merino Industries",
+          "unitPrice": 54171,
+          "embodiedCarbon": 231,
+          "region": "Mumbai",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-timber-005-4",
+          "name": "Greenply Industries",
+          "unitPrice": 54172,
+          "embodiedCarbon": 232,
+          "region": "Ahmedabad",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "timber-006",
+      "name": "Bamboo Composite Board",
+      "category": "timber",
+      "unit": "m³",
+      "description": "Bamboo Composite Board for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-timber-006-1",
+          "name": "Greenply Industries",
+          "unitPrice": 54200,
+          "embodiedCarbon": 180,
+          "region": "Bangalore",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 189,
+            "confidence": "medium",
+            "referenceIds": [
+              "timber-ref-1",
+              "timber-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-timber-006-2",
+          "name": "Century Plyboards",
+          "unitPrice": 54201,
+          "embodiedCarbon": 181,
+          "region": "Kolkata",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-timber-006-3",
+          "name": "Archidply",
+          "unitPrice": 54202,
+          "embodiedCarbon": 182,
+          "region": "Bangalore",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 191.1,
+            "confidence": "high",
+            "referenceIds": [
+              "timber-ref-1",
+              "timber-ref-2"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "timber-007",
+      "name": "Rubberwood Furniture Grade",
+      "category": "timber",
+      "unit": "m³",
+      "description": "Rubberwood Furniture Grade for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-timber-007-1",
+          "name": "Kitply Industries",
+          "unitPrice": 54231,
+          "embodiedCarbon": 211,
+          "region": "Delhi NCR",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-timber-007-2",
+          "name": "Merino Industries",
+          "unitPrice": 54232,
+          "embodiedCarbon": 212,
+          "region": "Hyderabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-timber-007-3",
+          "name": "Greenply Industries",
+          "unitPrice": 54233,
+          "embodiedCarbon": 213,
+          "region": "Delhi NCR",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-timber-007-4",
+          "name": "Century Plyboards",
+          "unitPrice": 54234,
+          "embodiedCarbon": 214,
+          "region": "Hyderabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-timber-007-5",
+          "name": "Archidply",
+          "unitPrice": 54235,
+          "embodiedCarbon": 215,
+          "region": "Delhi NCR",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "timber-008",
+      "name": "Cedar Cladding",
+      "category": "timber",
+      "unit": "m³",
+      "description": "Cedar Cladding for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-timber-008-1",
+          "name": "Century Plyboards",
+          "unitPrice": 54262,
+          "embodiedCarbon": 242,
+          "region": "Pune",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-timber-008-2",
+          "name": "Archidply",
+          "unitPrice": 54263,
+          "embodiedCarbon": 243,
+          "region": "Chennai",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 255.15,
+            "confidence": "medium",
+            "referenceIds": [
+              "timber-ref-1",
+              "timber-ref-2"
+            ]
+          }
+        },
+        {
+          "id": "sup-timber-008-3",
+          "name": "Kitply Industries",
+          "unitPrice": 54264,
+          "embodiedCarbon": 244,
+          "region": "Pune",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-timber-008-4",
+          "name": "Merino Industries",
+          "unitPrice": 54265,
+          "embodiedCarbon": 245,
+          "region": "Chennai",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 257.25,
+            "confidence": "high",
+            "referenceIds": [
+              "timber-ref-1",
+              "timber-ref-2"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "timber-009",
+      "name": "Marine Plywood",
+      "category": "timber",
+      "unit": "m³",
+      "description": "Marine Plywood for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-timber-009-1",
+          "name": "Merino Industries",
+          "unitPrice": 54293,
+          "embodiedCarbon": 193,
+          "region": "Ahmedabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-timber-009-2",
+          "name": "Greenply Industries",
+          "unitPrice": 54294,
+          "embodiedCarbon": 194,
+          "region": "Mumbai",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-timber-009-3",
+          "name": "Century Plyboards",
+          "unitPrice": 54295,
+          "embodiedCarbon": 195,
+          "region": "Ahmedabad",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "timber-010",
+      "name": "Particle Board E1",
+      "category": "timber",
+      "unit": "m³",
+      "description": "Particle Board E1 for Indian construction supply chains; regional availability varies.",
+      "suppliers": [
+        {
+          "id": "sup-timber-010-1",
+          "name": "Greenply Industries",
+          "unitPrice": 54975,
+          "embodiedCarbon": 235,
+          "region": "Delhi NCR",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-timber-010-2",
+          "name": "Century Plyboards",
+          "unitPrice": 54976,
+          "embodiedCarbon": 236,
+          "region": "Hyderabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-timber-010-3",
+          "name": "Archidply",
+          "unitPrice": 54977,
+          "embodiedCarbon": 237,
+          "region": "Delhi NCR",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-timber-010-4",
+          "name": "Kitply Industries",
+          "unitPrice": 54978,
+          "embodiedCarbon": 238,
+          "region": "Hyderabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-timber-010-5",
+          "name": "Merino Industries",
+          "unitPrice": 54979,
+          "embodiedCarbon": 239,
+          "region": "Delhi NCR",
+          "hasEPD": true
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-18",
+    "totalMaterials": 60,
+    "categories": [
+      "steel",
+      "cement",
+      "insulation",
+      "glass",
+      "aggregates",
+      "timber"
+    ]
+  }
+}
