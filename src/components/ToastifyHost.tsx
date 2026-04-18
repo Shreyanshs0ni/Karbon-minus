@@ -19,7 +19,7 @@ export function ToastifyHost() {
       pauseOnHover
       theme={theme === "dark" ? "dark" : "light"}
       toastStyle={{ border: "1px solid rgba(23, 207, 151, 0.45)" }}
-      progressStyle={{ background: "#17CF97" }}
+      progressClassName="karbon-toastify-progress"
     />
   );
 }

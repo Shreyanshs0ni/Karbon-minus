@@ -57,6 +57,11 @@ body {
   background: var(--background);
 }
 
+/* react-toastify v11: use progressClassName instead of removed progressStyle */
+.karbon-toastify-progress {
+  background: #17cf97;
+}
+
 .app-background-gradient {
   background-color: var(--background);
   background-image: radial-gradient(
