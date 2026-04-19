@@ -336,11 +336,10 @@ export default function MaterialsPage() {
                           return (
                             <li
                               key={`${line.id}-${a.alternative.id}-${a.alternativeSupplier.id}`}
-                              className={`rounded border p-3 text-sm text-foreground ${
-                                applied
-                                  ? "border-border/60 bg-muted/30 opacity-80"
-                                  : "border-border bg-card/50"
-                              }`}
+                              className={`rounded border p-3 text-sm text-foreground ${applied
+                                ? "border-border/60 bg-muted/30 opacity-80"
+                                : "border-border bg-card/50"
+                                }`}
                             >
                               <div className="flex flex-wrap gap-x-4 gap-y-1 text-muted">
                                 <span>
@@ -395,11 +394,72 @@ export default function MaterialsPage() {
                         })}
                       </ul>
                     )}
+
                   </div>
                 );
               })}
             </div>
           )}
+        </Card>
+        <Card className="mt-8 border-accent/20 bg-card/70 backdrop-blur-xl">
+          <div className="flex flex-col gap-6">
+
+            {/* Heading */}
+            <div>
+              <p className="text-sm uppercase tracking-wider text-accent">
+                Next Step
+              </p>
+
+              <h2 className="mt-2 text-2xl font-semibold text-foreground">
+                Continue Your Workflow
+              </h2>
+
+              <p className="mt-2 text-sm text-muted">
+                You've selected materials. Now optimize cost vs carbon tradeoffs
+                or generate a professional report.
+              </p>
+            </div>
+
+            {/* Progress Steps */}
+            <div className="flex flex-wrap gap-3 text-sm">
+              <span className="rounded-full bg-emerald-500/15 px-4 py-2 text-emerald-300">
+                ✓ Materials Added
+              </span>
+            </div>
+
+            {/* Buttons */}
+            <div className="grid gap-4 sm:grid-cols-2">
+
+              {/* Optimize */}
+              <Link
+                href={`/project/${id}/optimize`}
+                className="group rounded-2xl bg-accent px-6 py-5 text-black transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(23,207,151,0.35)]"
+              >
+                <div className="text-lg font-semibold">
+                  Optimize Procurement →
+                </div>
+
+                <p className="mt-1 text-sm text-black/70">
+                  Find best cost vs carbon combinations
+                </p>
+              </Link>
+
+              {/* Report */}
+              <Link
+                href={`/project/${id}/report`}
+                className="group rounded-2xl border border-accent px-6 py-5 text-accent transition-all duration-300 hover:-translate-y-1 hover:bg-accent/10"
+              >
+                <div className="text-lg font-semibold">
+                  Generate Report →
+                </div>
+
+                <p className="mt-1 text-sm text-muted">
+                  Export carbon insights and summary
+                </p>
+              </Link>
+
+            </div>
+          </div>
         </Card>
       </main>
     </>
