@@ -22,6 +22,10 @@ const COLORS = [
   "#14b8a6",
 ];
 
+/** Baseline vs current — same pair on cost and carbon before/after charts */
+const REPORT_BAR_BEFORE = "#64748b";
+const REPORT_BAR_AFTER = "#059669";
+
 export function BeforeAfterCostChart(props: {
   baselineCost: number;
   currentCost: number;
@@ -39,29 +43,24 @@ export function BeforeAfterCostChart(props: {
       <ResponsiveContainer width="100%" height="100%">
         <BarChart
           data={data}
-          margin={{ top: 8, right: 8, left: 8, bottom: 8 }}
-          layout="vertical"
+          margin={{ top: 8, right: 8, left: 16, bottom: 8 }}
         >
           <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
           <XAxis
-            type="number"
+            dataKey="label"
+            tick={{ fill: "var(--foreground)", fontSize: 11 }}
+            interval={0}
+          />
+          <YAxis
             tick={{ fill: "var(--foreground)" }}
-            tickFormatter={(v) =>
-              `₹${(Number(v) / 1e6).toFixed(2)}M`
-            }
+            tickFormatter={(v) => `₹${(Number(v) / 1e6).toFixed(2)}M`}
             label={{
-              value: "INR (millions shown on axis; tooltips show full amount)",
-              position: "bottom",
-              offset: 0,
+              value: "INR (M); tooltips show full amount",
+              angle: -90,
+              position: "insideLeft",
               fill: "var(--muted)",
               fontSize: 10,
             }}
-          />
-          <YAxis
-            type="category"
-            dataKey="label"
-            width={140}
-            tick={{ fill: "var(--foreground)", fontSize: 11 }}
           />
           <Tooltip
             contentStyle={{
@@ -73,7 +72,14 @@ export function BeforeAfterCostChart(props: {
               "Amount",
             ]}
           />
-          <Bar dataKey="value" fill="#3b82f6" name="INR" radius={[0, 4, 4, 0]} />
+          <Bar dataKey="value" name="INR" radius={[6, 6, 0, 0]}>
+            {data.map((_, i) => (
+              <Cell
+                key={i}
+                fill={i === 0 ? REPORT_BAR_BEFORE : REPORT_BAR_AFTER}
+              />
+            ))}
+          </Bar>
         </BarChart>
       </ResponsiveContainer>
     </div>
@@ -97,27 +103,24 @@ export function BeforeAfterCarbonChart(props: {
       <ResponsiveContainer width="100%" height="100%">
         <BarChart
           data={data}
-          margin={{ top: 8, right: 8, left: 8, bottom: 8 }}
-          layout="vertical"
+          margin={{ top: 8, right: 8, left: 16, bottom: 8 }}
         >
           <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
           <XAxis
-            type="number"
+            dataKey="label"
+            tick={{ fill: "var(--foreground)", fontSize: 11 }}
+            interval={0}
+          />
+          <YAxis
             tick={{ fill: "var(--foreground)" }}
             tickFormatter={(v) => `${Number(v).toFixed(1)} t`}
             label={{
               value: "tonnes CO₂e",
-              position: "bottom",
-              offset: 0,
+              angle: -90,
+              position: "insideLeft",
               fill: "var(--muted)",
               fontSize: 10,
             }}
-          />
-          <YAxis
-            type="category"
-            dataKey="label"
-            width={140}
-            tick={{ fill: "var(--foreground)", fontSize: 11 }}
           />
           <Tooltip
             contentStyle={{
@@ -132,7 +135,14 @@ export function BeforeAfterCarbonChart(props: {
               ];
             }}
           />
-          <Bar dataKey="value" fill="#10b981" name="t CO₂e" radius={[0, 4, 4, 0]} />
+          <Bar dataKey="value" name="t CO₂e" radius={[6, 6, 0, 0]}>
+            {data.map((_, i) => (
+              <Cell
+                key={i}
+                fill={i === 0 ? REPORT_BAR_BEFORE : REPORT_BAR_AFTER}
+              />
+            ))}
+          </Bar>
         </BarChart>
       </ResponsiveContainer>
     </div>
