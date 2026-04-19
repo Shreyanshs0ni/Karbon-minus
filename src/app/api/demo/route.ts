@@ -49,18 +49,23 @@ export async function GET(request: Request) {
   }
 
   const demoTemplateId = demo.project.id;
-  const project: Project = {
-    ...demo.project,
-    assumedBuildingArea:
-      demo.assumedBuildingArea ?? demo.project.assumedBuildingArea,
-  };
-
   const materials: ProjectMaterial[] = [];
   for (const line of demo.materials) {
     const mat = getMaterialById(line.materialId);
     if (!mat) continue;
     materials.push(buildProjectMaterial(mat, line.quantity));
   }
+
+  const baselineTotalCost = materials.reduce((a, m) => a + m.totalCost, 0);
+  const baselineTotalCarbon = materials.reduce((a, m) => a + m.totalCarbon, 0);
+
+  const project: Project = {
+    ...demo.project,
+    assumedBuildingArea:
+      demo.assumedBuildingArea ?? demo.project.assumedBuildingArea,
+    baselineTotalCost,
+    baselineTotalCarbon,
+  };
 
   return NextResponse.json({ project, materials, demoTemplateId });
 }

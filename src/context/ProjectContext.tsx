@@ -8,12 +8,15 @@ import React, {
   useMemo,
   useReducer,
 } from "react";
+import { getMaterialById } from "@/lib/db";
+import { buildProjectMaterial } from "@/lib/materials";
 import {
   loadActiveProjectId,
   loadProjects,
   saveActiveProjectId,
   saveProjects,
 } from "@/lib/storage";
+import { notifyError } from "@/lib/toast";
 import {
   AllDemosLoadedError,
   collectUsedDemoTemplateIds,
@@ -71,6 +74,7 @@ type Ctx = {
   setOptimizationResult: (r: OptimizationResult | null) => void;
   selectCombination: (c: MaterialCombination | null) => void;
   updateProject: (patch: Partial<Project>) => void;
+  applySelectedCombinationToMaterials: () => void;
   loadDemo: () => Promise<{ name: string }>;
 };
 
@@ -100,7 +104,13 @@ export function ProjectProvider({ children }: { children: React.ReactNode }) {
 
   const persist = useCallback(
     (projects: StoredProjectBundle[], activeId: string | null) => {
-      saveProjects(projects);
+      const ok = saveProjects(projects);
+      if (!ok) {
+        notifyError(
+          "Could not save to browser storage",
+          "Optimization or project data may be too large. This session still works, but a refresh may lose unsaved changes.",
+        );
+      }
       saveActiveProjectId(activeId);
     },
     [],
@@ -118,7 +128,9 @@ export function ProjectProvider({ children }: { children: React.ReactNode }) {
   const selectedCombination = useMemo(() => {
     const sid = activeBundle?.selectedCombinationId;
     if (!optimizationResult || !sid) return null;
-    return optimizationResult.combinations.find((c) => c.id === sid) ?? null;
+    const fromCombo = optimizationResult.combinations.find((c) => c.id === sid);
+    if (fromCombo) return fromCombo;
+    return optimizationResult.paretoFrontier.find((c) => c.id === sid) ?? null;
   }, [optimizationResult, activeBundle?.selectedCombinationId]);
 
   const mutate = useCallback(
@@ -148,6 +160,8 @@ export function ProjectProvider({ children }: { children: React.ReactNode }) {
         carbonBudget: data.carbonBudget,
         costCeiling: data.costCeiling,
         assumedBuildingArea: data.assumedBuildingArea,
+        baselineTotalCost: 0,
+        baselineTotalCarbon: 0,
         createdAt: now,
         updatedAt: now,
       };
@@ -259,6 +273,22 @@ export function ProjectProvider({ children }: { children: React.ReactNode }) {
     [mutate],
   );
 
+  const applySelectedCombinationToMaterials = useCallback(() => {
+    const comb = selectedCombination;
+    if (!comb || !state.activeProjectId) return;
+    mutate((b) => ({
+      ...b,
+      materials: b.materials.map((pm) => {
+        const sel = comb.selections.find((s) => s.materialId === pm.materialId);
+        if (!sel) return pm;
+        const mat = getMaterialById(pm.materialId);
+        if (!mat) return pm;
+        return buildProjectMaterial(mat, pm.quantity, sel.supplierId, pm.id);
+      }),
+      project: { ...b.project, updatedAt: new Date().toISOString() },
+    }));
+  }, [mutate, selectedCombination, state.activeProjectId]);
+
   const setOptimizationResult = useCallback(
     (result: OptimizationResult | null) => {
       mutate((b) => ({
@@ -308,12 +338,19 @@ export function ProjectProvider({ children }: { children: React.ReactNode }) {
       demoTemplateId: string;
     };
     const now = new Date().toISOString();
+    const baselineTotalCost = data.materials.reduce((a, m) => a + m.totalCost, 0);
+    const baselineTotalCarbon = data.materials.reduce(
+      (a, m) => a + m.totalCarbon,
+      0,
+    );
     const project: Project = {
       ...data.project,
       id: crypto.randomUUID(),
       createdAt: now,
       updatedAt: now,
       demoTemplateId: data.demoTemplateId,
+      baselineTotalCost,
+      baselineTotalCarbon,
     };
     const bundle: StoredProjectBundle = {
       project,
@@ -348,6 +385,7 @@ export function ProjectProvider({ children }: { children: React.ReactNode }) {
     setOptimizationResult,
     selectCombination,
     updateProject,
+    applySelectedCombinationToMaterials,
     loadDemo,
   };
 

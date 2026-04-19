@@ -37,6 +37,10 @@ export interface Project {
   carbonBudget: number;
   costCeiling: number;
   assumedBuildingArea?: number;
+  /** Frozen at project creation: baseline procurement totals (empty project = 0). */
+  baselineTotalCost: number;
+  /** Frozen at project creation: baseline embodied carbon (kgCO₂e). */
+  baselineTotalCarbon: number;
   /** Set for projects created from a catalog demo; used to avoid loading the same template twice. */
   demoTemplateId?: string;
   createdAt: string;

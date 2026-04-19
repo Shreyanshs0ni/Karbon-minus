@@ -2,177 +2,177 @@
   "demos": [
     {
       "project": {
-        "id": "template-bangalore-10story",
-        "name": "10-Story Residential — Bangalore",
-        "carbonBudget": 500000,
-        "costCeiling": 50000000,
-        "assumedBuildingArea": 10000,
-        "createdAt": "2024-01-15T00:00:00.000Z",
-        "updatedAt": "2024-01-15T00:00:00.000Z"
+        "id": "demo-hyd-it-green-pilot",
+        "name": "IT campus — low-carbon procurement pilot (Hyderabad)",
+        "carbonBudget": 1650000,
+        "costCeiling": 56000000,
+        "assumedBuildingArea": 18500,
+        "createdAt": "2025-08-01T00:00:00.000Z",
+        "updatedAt": "2025-08-01T00:00:00.000Z"
       },
-      "assumedBuildingArea": 10000,
+      "assumedBuildingArea": 18500,
       "materials": [
         {
-          "materialId": "steel-001",
-          "quantity": 150000,
-          "description": "Structural steel for framework"
+          "materialId": "steel-011",
+          "quantity": 168000,
+          "description": "EAF-route TMT for towers + podium (order-of-magnitude for a major concrete package)"
         },
         {
-          "materialId": "cement-001",
-          "quantity": 2000000,
-          "description": "Portland cement for concrete"
+          "materialId": "cement-011",
+          "quantity": 1120000,
+          "description": "PSC for slabs and shear walls—slag blend vs typical OPC"
         },
         {
-          "materialId": "glass-001",
-          "quantity": 8000,
-          "description": "Glass facades"
+          "materialId": "aggregates-011",
+          "quantity": 3850000,
+          "description": "M-sand and concrete fine aggregate for on-site batching"
         },
         {
-          "materialId": "insulation-001",
-          "quantity": 12000,
-          "description": "Wall and roof insulation"
+          "materialId": "glass-011",
+          "quantity": 5200,
+          "description": "Curtain-wall DGU for office blocks (façade area scale)"
         },
         {
-          "materialId": "aggregates-001",
-          "quantity": 5000000,
-          "description": "Aggregates for concrete"
+          "materialId": "insulation-011",
+          "quantity": 14800,
+          "description": "Rockwool in metal façade cavities—perimeter insulation"
         },
         {
-          "materialId": "timber-001",
-          "quantity": 120,
-          "description": "Timber finishes"
+          "materialId": "timber-011",
+          "quantity": 68,
+          "description": "Certified plywood for formwork and interior packages (m³)"
         }
       ]
     },
     {
       "project": {
-        "id": "template-mumbai-commercial",
-        "name": "Commercial Tower — Mumbai",
-        "carbonBudget": 720000,
-        "costCeiling": 78000000,
-        "assumedBuildingArea": 14500,
-        "createdAt": "2024-02-01T00:00:00.000Z",
-        "updatedAt": "2024-02-01T00:00:00.000Z"
+        "id": "demo-mumbai-bkc-office",
+        "name": "Grade A office — BKC Mumbai (shell + façade package)",
+        "carbonBudget": 2100000,
+        "costCeiling": 92000000,
+        "assumedBuildingArea": 22000,
+        "createdAt": "2025-09-12T00:00:00.000Z",
+        "updatedAt": "2025-09-12T00:00:00.000Z"
       },
-      "assumedBuildingArea": 14500,
+      "assumedBuildingArea": 22000,
       "materials": [
         {
-          "materialId": "steel-004",
-          "quantity": 220000,
-          "description": "High-rise structural steel"
+          "materialId": "steel-003",
+          "quantity": 195000,
+          "description": "ISMB / built-up sections for composite deck and core steel"
         },
         {
           "materialId": "cement-003",
-          "quantity": 2800000,
-          "description": "Blended cement for slabs"
+          "quantity": 1450000,
+          "description": "Blended cement for high-strength floor slabs"
         },
         {
           "materialId": "glass-003",
-          "quantity": 14000,
-          "description": "Curtain wall glazing"
+          "quantity": 11800,
+          "description": "Triple-height lobby + typical floor DGU (façade-heavy office)"
         },
         {
           "materialId": "insulation-004",
-          "quantity": 18000,
-          "description": "Acoustic and thermal insulation"
+          "quantity": 19200,
+          "description": "EPS + system for rain-screen façade build-up"
         },
         {
           "materialId": "aggregates-003",
-          "quantity": 6200000,
-          "description": "Structural concrete aggregates"
+          "quantity": 5100000,
+          "description": "20mm + 10mm aggregates for pumped concrete"
         },
         {
           "materialId": "timber-003",
-          "quantity": 200,
-          "description": "Interior timber work"
+          "quantity": 110,
+          "description": "BWR plywood for lift lobbies and feature ceilings"
         }
       ]
     },
     {
       "project": {
-        "id": "template-hyderabad-midrise",
-        "name": "Mid-Rise Housing — Hyderabad",
-        "carbonBudget": 380000,
+        "id": "demo-lucknow-affordable-housing",
+        "name": "Affordable housing — multi-tower (Lucknow)",
+        "carbonBudget": 980000,
         "costCeiling": 42000000,
-        "assumedBuildingArea": 7800,
-        "createdAt": "2024-02-20T00:00:00.000Z",
-        "updatedAt": "2024-02-20T00:00:00.000Z"
+        "assumedBuildingArea": 9600,
+        "createdAt": "2025-10-05T00:00:00.000Z",
+        "updatedAt": "2025-10-05T00:00:00.000Z"
       },
-      "assumedBuildingArea": 7800,
+      "assumedBuildingArea": 9600,
       "materials": [
         {
-          "materialId": "steel-007",
-          "quantity": 95000,
-          "description": "Mid-rise steel frame"
-        },
-        {
-          "materialId": "cement-005",
-          "quantity": 1400000,
-          "description": "Cement for foundations and walls"
-        },
-        {
-          "materialId": "glass-002",
-          "quantity": 5200,
-          "description": "Balcony and common-area glazing"
-        },
-        {
-          "materialId": "insulation-003",
-          "quantity": 9000,
-          "description": "Roof insulation"
-        },
-        {
-          "materialId": "aggregates-005",
-          "quantity": 3200000,
-          "description": "Concrete mix aggregates"
-        },
-        {
-          "materialId": "timber-002",
-          "quantity": 85,
-          "description": "Doors and trims"
-        }
-      ]
-    },
-    {
-      "project": {
-        "id": "template-pune-industrial",
-        "name": "Industrial Warehouse — Pune",
-        "carbonBudget": 210000,
-        "costCeiling": 28000000,
-        "assumedBuildingArea": 12000,
-        "createdAt": "2024-03-10T00:00:00.000Z",
-        "updatedAt": "2024-03-10T00:00:00.000Z"
-      },
-      "assumedBuildingArea": 12000,
-      "materials": [
-        {
-          "materialId": "steel-010",
-          "quantity": 180000,
-          "description": "Portal frame and cladding supports"
+          "materialId": "steel-001",
+          "quantity": 92000,
+          "description": "Fe500D rebar for RCC frame + shear walls (typical kg/m² band)"
         },
         {
           "materialId": "cement-002",
-          "quantity": 950000,
-          "description": "Floor slab and yard concrete"
+          "quantity": 720000,
+          "description": "PPC for mass concrete and masonry mortar"
+        },
+        {
+          "materialId": "glass-001",
+          "quantity": 3800,
+          "description": "Clear float for balconies + stair windows"
+        },
+        {
+          "materialId": "insulation-002",
+          "quantity": 7400,
+          "description": "Roof and external wall insulation (code-driven U-value)"
+        },
+        {
+          "materialId": "aggregates-002",
+          "quantity": 2650000,
+          "description": "River sand + crushed stone for RMC and masonry"
+        },
+        {
+          "materialId": "timber-002",
+          "quantity": 42,
+          "description": "Sal wood for door frames / shuttering (m³)"
+        }
+      ]
+    },
+    {
+      "project": {
+        "id": "demo-gujarat-cold-storage",
+        "name": "Cold-chain warehouse — NH corridor (Gujarat)",
+        "carbonBudget": 620000,
+        "costCeiling": 38000000,
+        "assumedBuildingArea": 14000,
+        "createdAt": "2025-11-18T00:00:00.000Z",
+        "updatedAt": "2025-11-18T00:00:00.000Z"
+      },
+      "assumedBuildingArea": 14000,
+      "materials": [
+        {
+          "materialId": "steel-010",
+          "quantity": 142000,
+          "description": "Pre-engineered building primary + secondary steel"
+        },
+        {
+          "materialId": "cement-002",
+          "quantity": 480000,
+          "description": "PPC for floor slabs and aprons"
         },
         {
           "materialId": "glass-005",
-          "quantity": 2400,
-          "description": "Skylights and clerestory glass"
+          "quantity": 2100,
+          "description": "Skylights and high-level windows for daylighting"
         },
         {
           "materialId": "insulation-006",
-          "quantity": 22000,
-          "description": "Roof and wall insulation"
+          "quantity": 24800,
+          "description": "Cold-room envelope insulation (roof + wall panels)"
         },
         {
           "materialId": "aggregates-007",
-          "quantity": 4100000,
-          "description": "Heavy-duty slab aggregates"
+          "quantity": 1980000,
+          "description": "Structural fill and yard concrete aggregate"
         },
         {
           "materialId": "timber-005",
-          "quantity": 45,
-          "description": "Office fit-out timber"
+          "quantity": 36,
+          "description": "Office and guard-room fit-out timber (m³)"
         }
       ]
     }

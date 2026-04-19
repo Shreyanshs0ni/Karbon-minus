@@ -53,6 +53,10 @@ function heuristicAlternatives(pm: ProjectMaterial): AlternativeSuggestion[] {
   return peers.slice(0, 5);
 }
 
+function suggestionKey(a: AlternativeSuggestion): string {
+  return `${a.currentMaterial.id}:${a.alternative.id}`;
+}
+
 export async function POST(req: NextRequest) {
   const json = await req.json().catch(() => null);
   const parsed = bodySchema.safeParse(json);
@@ -75,10 +79,11 @@ export async function POST(req: NextRequest) {
   const user = `Materials: ${JSON.stringify(
     materials.map((m) => ({
       id: m.materialId,
+      lineId: m.id,
       q: m.quantity,
       supplier: m.supplierName,
     })),
-  )}\nCatalog sample: ${JSON.stringify(catalog.slice(0, 40))}`;
+  )}\nCatalog (ids): ${JSON.stringify(catalog)}`;
 
   const ai = await chatJson<{
     suggestions: Array<{
@@ -89,7 +94,13 @@ export async function POST(req: NextRequest) {
     }>;
   }>(system, user);
 
-  const out: AlternativeSuggestion[] = [];
+  const merged = new Map<string, AlternativeSuggestion>();
+
+  for (const pm of materials) {
+    for (const h of heuristicAlternatives(pm)) {
+      merged.set(suggestionKey(h), h);
+    }
+  }
 
   if (ai.ok) {
     for (const s of ai.data.suggestions) {
@@ -109,7 +120,7 @@ export async function POST(req: NextRequest) {
       const costDiff =
         pm.quantity * sup.unitPrice -
         pm.quantity * (curSup?.unitPrice ?? pm.unitPrice);
-      out.push({
+      const row: AlternativeSuggestion = {
         currentMaterial: pm,
         alternative: alt,
         alternativeSupplier: sup,
@@ -119,16 +130,12 @@ export async function POST(req: NextRequest) {
         costDifferencePercent:
           pm.totalCost > 0 ? (100 * costDiff) / pm.totalCost : 0,
         explanation: s.explanation,
-      });
+      };
+      merged.set(suggestionKey(row), row);
     }
   }
 
-  if (out.length === 0) {
-    for (const pm of materials) {
-      out.push(...heuristicAlternatives(pm));
-    }
-  }
-
+  const out = Array.from(merged.values());
   out.sort((a, b) => {
     const aGood = a.costDifference <= 0 && a.carbonSavings > 0 ? 1 : 0;
     const bGood = b.costDifference <= 0 && b.carbonSavings > 0 ? 1 : 0;
@@ -136,5 +143,5 @@ export async function POST(req: NextRequest) {
     return b.carbonSavings - a.carbonSavings;
   });
 
-  return NextResponse.json({ suggestions: out.slice(0, 20) });
+  return NextResponse.json({ suggestions: out });
 }

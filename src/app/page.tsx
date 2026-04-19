@@ -10,7 +10,7 @@ export default function LandingPage() {
   return (
     <>
       <Nav minimal />
-      <main className="h-[100%] overflow-hidden">
+      <main className="h-[100%] overflow-hidden ">
         <section className="relative z-50 overflow-hidden px-4 pb-24 pt-16 md:pb-32 md:pt-20">
           <div
             className="pointer-events-none absolute -left-40 top-10 h-80 w-80 rounded-full bg-accent/20 blur-3xl dark:bg-accent/10"

@@ -23,6 +23,7 @@ export default function OptimizePage() {
     setOptimizationResult,
     selectedCombination,
     selectCombination,
+    applySelectedCombinationToMaterials,
   } = useProject();
 
   const [loading, setLoading] = useState(false);
@@ -190,6 +191,19 @@ export default function OptimizePage() {
                     </li>
                   ))}
                 </ul>
+                <Button
+                  type="button"
+                  className="mt-4"
+                  onClick={() => {
+                    applySelectedCombinationToMaterials();
+                    notifySuccess(
+                      "Shortlist applied",
+                      "Line items now use the selected suppliers.",
+                    );
+                  }}
+                >
+                  Apply shortlist to project line items
+                </Button>
               </div>
             )}
           </Card>

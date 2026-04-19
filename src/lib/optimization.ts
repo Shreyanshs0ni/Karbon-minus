@@ -184,6 +184,38 @@ export function runOptimization(input: OptimizeInput): OptimizationResult {
   };
 }
 
+/** Cap stored/transmitted combinations so localStorage stays under quota. */
+export const MAX_STORED_COMBINATIONS = 800;
+
+/**
+ * Keep feasible points, full Pareto frontier, then fill up to cap (for chart context).
+ */
+export function slimOptimizationResult(full: OptimizationResult): OptimizationResult {
+  const byId = new Map<string, MaterialCombination>();
+
+  for (const c of full.combinations) {
+    if (c.isFeasible) byId.set(c.id, c);
+  }
+  for (const c of full.paretoFrontier) {
+    byId.set(c.id, c);
+  }
+
+  if (byId.size < MAX_STORED_COMBINATIONS) {
+    for (const c of full.combinations) {
+      if (byId.size >= MAX_STORED_COMBINATIONS) break;
+      if (!byId.has(c.id)) byId.set(c.id, c);
+    }
+  }
+
+  const combinations = Array.from(byId.values());
+  return {
+    ...full,
+    combinations,
+    paretoFrontier: full.paretoFrontier,
+    baseline: full.baseline,
+  };
+}
+
 export function projectMaterialsToLineItems(
   materials: ProjectMaterial[],
   getMaterial: (id: string) => MaterialEntry | undefined,

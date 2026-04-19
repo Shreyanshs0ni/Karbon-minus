@@ -4,6 +4,7 @@ import { getMaterialById } from "@/lib/db";
 import {
   projectMaterialsToLineItems,
   runOptimization,
+  slimOptimizationResult,
 } from "@/lib/optimization";
 import type { ProjectMaterial } from "@/types";
 
@@ -62,18 +63,17 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: lineItems.error }, { status: 400 });
   }
 
-  const result = runOptimization({
+  const full = runOptimization({
     lineItems,
     carbonBudget,
     costCeiling,
   });
-
-  const baseline = result.baseline;
+  const result = slimOptimizationResult(full);
 
   return NextResponse.json({
     combinations: result.combinations,
     paretoFrontier: result.paretoFrontier,
-    baseline: baseline,
+    baseline: result.baseline,
     feasibleCount: result.feasibleCount,
     totalCombinations: result.totalCombinations,
     executionTimeMs: result.executionTimeMs,

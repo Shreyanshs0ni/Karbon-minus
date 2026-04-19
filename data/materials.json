@@ -2987,12 +2987,366 @@
           "hasEPD": true
         }
       ]
+    },
+    {
+      "id": "steel-011",
+      "name": "TMT Fe500D (EAF / scrap-based)",
+      "category": "steel",
+      "unit": "kg",
+      "description": "Illustrative lower-carbon rebar tier (EAF route, higher scrap share). Values are mock ranges for comparison—not mill certificates.",
+      "suppliers": [
+        {
+          "id": "sup-steel-011-1",
+          "name": "JSW NeoSteel",
+          "unitPrice": 78,
+          "embodiedCarbon": 1.52,
+          "region": "Mumbai",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-steel-011-2",
+          "name": "JSW NeoSteel",
+          "unitPrice": 77,
+          "embodiedCarbon": 1.56,
+          "region": "Hyderabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-steel-011-3",
+          "name": "Tata Steel",
+          "unitPrice": 76,
+          "embodiedCarbon": 1.61,
+          "region": "Chennai",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 1.69,
+            "confidence": "medium",
+            "referenceIds": ["steel-011-ref"]
+          }
+        },
+        {
+          "id": "sup-steel-011-4",
+          "name": "AM/NS India",
+          "unitPrice": 75,
+          "embodiedCarbon": 1.64,
+          "region": "Pune",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-steel-011-5",
+          "name": "SAIL",
+          "unitPrice": 74,
+          "embodiedCarbon": 1.72,
+          "region": "Kolkata",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 1.78,
+            "confidence": "low",
+            "referenceIds": ["steel-011-ref"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "cement-011",
+      "name": "PSC 53 (Portland Slag Cement)",
+      "category": "cement",
+      "unit": "kg",
+      "description": "Slag-blended cement—typically lower clinker factor than pure OPC. Mock ₹/bag-equivalent and kgCO₂e/kg for educational comparison.",
+      "suppliers": [
+        {
+          "id": "sup-cement-011-1",
+          "name": "UltraTech Cement",
+          "unitPrice": 9.2,
+          "embodiedCarbon": 0.74,
+          "region": "Mumbai",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-cement-011-2",
+          "name": "Shree Cement",
+          "unitPrice": 8.8,
+          "embodiedCarbon": 0.77,
+          "region": "Jaipur",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-cement-011-3",
+          "name": "Dalmia Cement",
+          "unitPrice": 8.4,
+          "embodiedCarbon": 0.8,
+          "region": "Chennai",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 0.84,
+            "confidence": "high",
+            "referenceIds": ["cement-psc-ref"]
+          }
+        },
+        {
+          "id": "sup-cement-011-4",
+          "name": "ACC Limited",
+          "unitPrice": 8.1,
+          "embodiedCarbon": 0.83,
+          "region": "Bangalore",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-cement-011-5",
+          "name": "Ambuja Cements",
+          "unitPrice": 7.9,
+          "embodiedCarbon": 0.86,
+          "region": "Ahmedabad",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 0.9,
+            "confidence": "medium",
+            "referenceIds": ["cement-psc-ref"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "insulation-011",
+      "name": "Rockwool curtain wall pack 100mm",
+      "category": "insulation",
+      "unit": "m²",
+      "description": "High-density rock wool for façade cavities. Mock façade-area pricing and embodied carbon per m² installed.",
+      "suppliers": [
+        {
+          "id": "sup-insulation-011-1",
+          "name": "Rockwool India",
+          "unitPrice": 348,
+          "embodiedCarbon": 5.1,
+          "region": "Mumbai",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-insulation-011-2",
+          "name": "Rockwool India",
+          "unitPrice": 352,
+          "embodiedCarbon": 5.05,
+          "region": "Hyderabad",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-insulation-011-3",
+          "name": "Saint-Gobain ISOVER",
+          "unitPrice": 356,
+          "embodiedCarbon": 5.35,
+          "region": "Chennai",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 5.62,
+            "confidence": "medium",
+            "referenceIds": ["rw-ref"]
+          }
+        },
+        {
+          "id": "sup-insulation-011-4",
+          "name": "HIL Limited",
+          "unitPrice": 360,
+          "embodiedCarbon": 5.45,
+          "region": "Bangalore",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-insulation-011-5",
+          "name": "U.P. Twiga",
+          "unitPrice": 364,
+          "embodiedCarbon": 5.55,
+          "region": "Delhi NCR",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 5.83,
+            "confidence": "low",
+            "referenceIds": ["rw-ref"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "glass-011",
+      "name": "DGU Low-E 6+12Ar+6 (curtain wall)",
+      "category": "glass",
+      "unit": "m²",
+      "description": "Insulating glass unit for commercial façades. Mock supply rates and cradle-to-gate–style carbon intensity per m² of glazing.",
+      "suppliers": [
+        {
+          "id": "sup-glass-011-1",
+          "name": "Saint-Gobain Glass",
+          "unitPrice": 2180,
+          "embodiedCarbon": 41,
+          "region": "Mumbai",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-glass-011-2",
+          "name": "Asahi India Glass",
+          "unitPrice": 2140,
+          "embodiedCarbon": 42.5,
+          "region": "Chennai",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-glass-011-3",
+          "name": "Gujarat Guardian",
+          "unitPrice": 2090,
+          "embodiedCarbon": 44,
+          "region": "Ahmedabad",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 46.2,
+            "confidence": "medium",
+            "referenceIds": ["igu-ref"]
+          }
+        },
+        {
+          "id": "sup-glass-011-4",
+          "name": "Hindusthan National Glass",
+          "unitPrice": 2050,
+          "embodiedCarbon": 45.2,
+          "region": "Hyderabad",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 47.5,
+            "confidence": "low",
+            "referenceIds": ["igu-ref"]
+          }
+        },
+        {
+          "id": "sup-glass-011-5",
+          "name": "Saint-Gobain Glass",
+          "unitPrice": 2010,
+          "embodiedCarbon": 46.8,
+          "region": "Pune",
+          "hasEPD": true
+        }
+      ]
+    },
+    {
+      "id": "aggregates-011",
+      "name": "Manufactured sand (M-sand) Zone II",
+      "category": "aggregates",
+      "unit": "kg",
+      "description": "Crushed-rock manufactured sand replacing river sand in concrete. Typical lower logistics variability than very remote river sand.",
+      "suppliers": [
+        {
+          "id": "sup-aggregates-011-1",
+          "name": "Robo Silicon",
+          "unitPrice": 1.42,
+          "embodiedCarbon": 0.024,
+          "region": "Bangalore",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-aggregates-011-2",
+          "name": "Thriveni Sands",
+          "unitPrice": 1.45,
+          "embodiedCarbon": 0.025,
+          "region": "Chennai",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-aggregates-011-3",
+          "name": "NCC Aggregates",
+          "unitPrice": 1.48,
+          "embodiedCarbon": 0.027,
+          "region": "Hyderabad",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 0.028,
+            "confidence": "high",
+            "referenceIds": ["msand-ref"]
+          }
+        },
+        {
+          "id": "sup-aggregates-011-4",
+          "name": "UltraTech ReadyMix",
+          "unitPrice": 1.51,
+          "embodiedCarbon": 0.029,
+          "region": "Pune",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-aggregates-011-5",
+          "name": "Lafarge Aggregates",
+          "unitPrice": 1.54,
+          "embodiedCarbon": 0.031,
+          "region": "Mumbai",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 0.033,
+            "confidence": "medium",
+            "referenceIds": ["msand-ref"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "timber-011",
+      "name": "FSC-certified structural plywood 19mm",
+      "category": "timber",
+      "unit": "m³",
+      "description": "Certified plywood for formwork and finishes. Mock ₹/m³ and biogenic/fossil carbon simplified to a single intensity for the app.",
+      "suppliers": [
+        {
+          "id": "sup-timber-011-1",
+          "name": "Greenply Industries",
+          "unitPrice": 52800,
+          "embodiedCarbon": 178,
+          "region": "Kolkata",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-timber-011-2",
+          "name": "Century Plyboards",
+          "unitPrice": 53100,
+          "embodiedCarbon": 182,
+          "region": "Guwahati",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-timber-011-3",
+          "name": "Archidply",
+          "unitPrice": 53400,
+          "embodiedCarbon": 186,
+          "region": "Bhubaneswar",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 195,
+            "confidence": "medium",
+            "referenceIds": ["ply-ref"]
+          }
+        },
+        {
+          "id": "sup-timber-011-4",
+          "name": "Kitply Industries",
+          "unitPrice": 53700,
+          "embodiedCarbon": 190,
+          "region": "Bangalore",
+          "hasEPD": true
+        },
+        {
+          "id": "sup-timber-011-5",
+          "name": "Merino Industries",
+          "unitPrice": 54000,
+          "embodiedCarbon": 194,
+          "region": "Delhi NCR",
+          "hasEPD": false,
+          "estimatedCarbon": {
+            "value": 203,
+            "confidence": "low",
+            "referenceIds": ["ply-ref"]
+          }
+        }
+      ]
     }
   ],
   "metadata": {
-    "version": "1.0.0",
-    "lastUpdated": "2026-04-18",
-    "totalMaterials": 60,
+    "version": "1.1.0",
+    "lastUpdated": "2026-04-19",
+    "totalMaterials": 66,
     "categories": [
       "steel",
       "cement",
