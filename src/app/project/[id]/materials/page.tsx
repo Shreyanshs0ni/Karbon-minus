@@ -53,7 +53,11 @@ export default function MaterialsPage() {
 
   /** Only refetch when line items are added or removed, not on swap/qty edit. */
   const lineIdsKey = useMemo(
-    () => materials.map((m) => m.id).sort().join("|"),
+    () =>
+      materials
+        .map((m) => m.id)
+        .sort()
+        .join("|"),
     [materials],
   );
 
@@ -150,7 +154,10 @@ export default function MaterialsPage() {
                     onClick={() => {
                       const pm = buildProjectMaterial(mat, s.defaultQty);
                       addMaterial(pm);
-                      notifySuccess("Added", `${mat.name} (${s.defaultQty} ${mat.unit})`);
+                      notifySuccess(
+                        "Added",
+                        `${mat.name} (${s.defaultQty} ${mat.unit})`,
+                      );
                     }}
                   >
                     + {s.label}
@@ -309,14 +316,19 @@ export default function MaterialsPage() {
           </div>
           {altLoading && <p className="mt-2 text-sm text-subtle">Analyzing…</p>}
           {!altLoading && materials.length === 0 && (
-            <p className="mt-2 text-sm text-muted">Add materials to see swaps.</p>
+            <p className="mt-2 text-sm text-muted">
+              Add materials to see swaps.
+            </p>
           )}
           {!altLoading && materials.length > 0 && (
             <div className="mt-4 space-y-8">
               {materials.map((line) => {
                 const row = suggestionsByLineId.get(line.id) ?? [];
                 return (
-                  <div key={line.id} className="border-b border-divide pb-6 last:border-0">
+                  <div
+                    key={line.id}
+                    className="border-b border-divide pb-6 last:border-0"
+                  >
                     <div className="font-medium text-foreground">
                       {line.materialName}{" "}
                       <span className="text-sm font-normal text-muted">
@@ -331,15 +343,15 @@ export default function MaterialsPage() {
                     ) : (
                       <ul className="mt-3 space-y-3">
                         {row.map((a) => {
-                          const applied =
-                            line.materialId === a.alternative.id;
+                          const applied = line.materialId === a.alternative.id;
                           return (
                             <li
                               key={`${line.id}-${a.alternative.id}-${a.alternativeSupplier.id}`}
-                              className={`rounded border p-3 text-sm text-foreground ${applied
-                                ? "border-border/60 bg-muted/30 opacity-80"
-                                : "border-border bg-card/50"
-                                }`}
+                              className={`rounded border p-3 text-sm text-foreground ${
+                                applied
+                                  ? "border-border/60 bg-muted/30 opacity-80"
+                                  : "border-border bg-card/50"
+                              }`}
                             >
                               <div className="flex flex-wrap gap-x-4 gap-y-1 text-muted">
                                 <span>
@@ -387,14 +399,15 @@ export default function MaterialsPage() {
                                   );
                                 }}
                               >
-                                {applied ? "Current selection" : "Swap in project"}
+                                {applied
+                                  ? "Current selection"
+                                  : "Swap in project"}
                               </Button>
                             </li>
                           );
                         })}
                       </ul>
                     )}
-
                   </div>
                 );
               })}
@@ -403,7 +416,6 @@ export default function MaterialsPage() {
         </Card>
         <Card className="mt-8 border-accent/20 bg-card/70 backdrop-blur-xl">
           <div className="flex flex-col gap-6">
-
             {/* Heading */}
             <div>
               <p className="text-sm uppercase tracking-wider text-accent">
@@ -415,8 +427,8 @@ export default function MaterialsPage() {
               </h2>
 
               <p className="mt-2 text-sm text-muted">
-                You've selected materials. Now optimize cost vs carbon tradeoffs
-                or generate a professional report.
+                You have selected materials. Now optimize cost vs carbon
+                tradeoffs or generate a professional report.
               </p>
             </div>
 
@@ -429,7 +441,6 @@ export default function MaterialsPage() {
 
             {/* Buttons */}
             <div className="grid gap-4 sm:grid-cols-2">
-
               {/* Optimize */}
               <Link
                 href={`/project/${id}/optimize`}
@@ -449,15 +460,12 @@ export default function MaterialsPage() {
                 href={`/project/${id}/report`}
                 className="group rounded-2xl border border-accent px-6 py-5 text-accent transition-all duration-300 hover:-translate-y-1 hover:bg-accent/10"
               >
-                <div className="text-lg font-semibold">
-                  Generate Report →
-                </div>
+                <div className="text-lg font-semibold">Generate Report →</div>
 
                 <p className="mt-1 text-sm text-muted">
                   Export carbon insights and summary
                 </p>
               </Link>
-
             </div>
           </div>
         </Card>
