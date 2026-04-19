@@ -13,12 +13,13 @@ export function Button({
     <button
       type={type}
       className={cn(
-        "rounded-lg px-4 py-2 text-sm font-medium transition",
+        "rounded-xl px-4 py-2.5 text-sm font-semibold transition-all duration-300 disabled:opacity-45",
         variant === "primary" &&
-          "bg-emerald-700 text-white hover:bg-emerald-800 disabled:opacity-50 dark:bg-emerald-600 dark:hover:bg-emerald-500",
+          "bg-accent text-[#06131d] shadow-[0_0_24px_-8px_var(--accent-glow)] hover:brightness-105 dark:text-[#06131d]",
         variant === "secondary" &&
-          "border border-border bg-card text-foreground hover:bg-panel",
-        variant === "ghost" && "text-accent hover:bg-accent-bg-hover",
+          "border border-border/90 bg-panel/90 text-foreground backdrop-blur-sm hover:border-accent/35 hover:bg-accent/10 dark:bg-white/[0.06] dark:hover:bg-accent/15",
+        variant === "ghost" &&
+          "text-accent hover:bg-accent-bg-hover dark:hover:bg-accent/15",
         className,
       )}
       {...props}

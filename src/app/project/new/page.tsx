@@ -50,12 +50,13 @@ export default function NewProjectPage() {
   return (
     <>
       <Nav />
-      <main className="mx-auto max-w-lg px-4 py-10">
+      <main className="mx-auto w-full max-w-lg px-4 py-10 sm:px-6 lg:px-8">
         <Link href="/projects" className="text-sm text-accent hover:underline">
           ← Back
         </Link>
-        <Card className="mt-6">
-          <h1 className="text-xl font-semibold text-foreground">New project</h1>
+        <Card className="mt-8">
+          <p className="eyebrow">Create</p>
+          <h1 className="mt-2 text-xl font-semibold text-foreground">New project</h1>
           <form onSubmit={submit} className="mt-6 space-y-4">
             <div>
               <label className="block text-sm font-medium text-label">

@@ -26,14 +26,16 @@ export default function ProjectsPage() {
   return (
     <>
       <Nav />
-      <main className="mx-auto max-w-5xl px-4 py-10">
-        <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
+      <main className="page-shell">
+        <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
           <div>
-            <h1 className="text-2xl font-semibold text-foreground">
-              Embodied Carbon Negotiator
+            <p className="eyebrow">Workspace</p>
+            <h1 className="mt-2 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+              Your projects
             </h1>
-            <p className="mt-1 text-muted">
-              Compare materials, optimize cost vs carbon, and brief suppliers.
+            <p className="mt-2 max-w-lg text-muted">
+              Compare materials, optimize cost vs carbon, and brief suppliers —
+              same glass UI everywhere.
             </p>
           </div>
           <div className="flex gap-2">
@@ -44,8 +46,8 @@ export default function ProjectsPage() {
         </div>
 
         <Card>
-          <h2 className="mb-4 text-lg font-medium text-foreground">
-            Your projects
+          <h2 className="mb-4 text-lg font-semibold text-foreground">
+            All projects
           </h2>
           {projects.length === 0 ? (
             <p className="text-muted">

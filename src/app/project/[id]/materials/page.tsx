@@ -107,7 +107,7 @@ export default function MaterialsPage() {
     return (
       <>
         <Nav projectId={id} />
-        <main className="mx-auto max-w-5xl px-4 py-10">Loading…</main>
+        <main className="page-shell">Loading…</main>
       </>
     );
   }
@@ -115,19 +115,23 @@ export default function MaterialsPage() {
   return (
     <>
       <Nav projectId={id} />
-      <main className="mx-auto max-w-5xl px-4 py-10">
+      <main className="page-shell">
         <Link
           href={`/project/${id}`}
           className="text-sm text-accent hover:underline"
         >
           ← Dashboard
         </Link>
-        <h1 className="mt-4 text-2xl font-semibold text-foreground">
+        <p className="eyebrow mt-8">Bill of materials</p>
+        <h1 className="mt-2 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
           Materials
         </h1>
+        <p className="mt-2 max-w-2xl text-muted">
+          Add lines, swap suppliers, and explore lower-carbon alternatives.
+        </p>
 
         {materials.length < 4 && (
-          <Card className="mt-6 border-emerald-500/30 bg-emerald-500/5">
+          <Card className="mt-8 border-accent/30 bg-accent/5">
             <h2 className="text-lg font-medium text-foreground">
               Suggested starters
             </h2>
@@ -178,7 +182,7 @@ export default function MaterialsPage() {
           <div className="mt-2">
             <label className="text-sm text-muted">Category</label>
             <select
-              className="ml-2 rounded border border-border bg-input-bg px-2 py-1 text-sm text-foreground"
+              className="ml-2 rounded-xl border border-border bg-input-bg px-3 py-2 text-sm text-foreground backdrop-blur-sm focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30"
               value={cat}
               onChange={(e) => setCat(e.target.value)}
             >

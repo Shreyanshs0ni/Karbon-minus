@@ -38,7 +38,7 @@ export function MaterialList({
                 step="any"
                 value={m.quantity}
                 onChange={(e) => onQuantityChange(m.id, Number(e.target.value))}
-                className="ml-1 w-24 rounded border border-border bg-input-bg px-2 py-1 text-foreground"
+                className="ml-1 w-24 rounded-xl border border-border bg-input-bg px-2 py-1.5 text-foreground backdrop-blur-sm transition focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30"
               />
             </label>
             <Button

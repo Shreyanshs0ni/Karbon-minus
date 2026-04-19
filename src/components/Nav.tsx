@@ -34,8 +34,8 @@ export function Nav({
     : [];
 
   return (
-    <header className="sticky top-0 z-40 border-b border-white/15 bg-[var(--nav-bg)] shadow-sm backdrop-blur-md dark:border-white/10 supports-[backdrop-filter]:bg-[var(--nav-bg)]">
-      <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 px-4 py-4">
+    <header className="sticky top-0 z-40 border-b border-white/10 bg-[var(--nav-bg)] shadow-[0_8px_32px_-12px_rgba(0,0,0,0.35)] backdrop-blur-xl supports-[backdrop-filter]:bg-[var(--nav-bg)] dark:border-white/[0.08] dark:shadow-[0_8px_40px_-12px_rgba(0,0,0,0.5)]">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 py-4 sm:px-6">
         <Link
           href="/"
           className="flex items-center gap-2 font-semibold text-accent"

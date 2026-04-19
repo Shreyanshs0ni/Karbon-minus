@@ -23,14 +23,24 @@ type Row = {
   feasible: boolean;
 };
 
-const axisTick = { fill: "currentColor" };
+const ACCENT = "#17CF97";
+const FEASIBLE = "#17CF97";
+const INFEASIBLE = "rgba(255,255,255,0.28)";
+const FRONTIER = "#ff9f43";
+const SELECTED = "#38bdf8";
+const GRID = "rgba(255,255,255,0.08)";
 
 const MAX_SCATTER_POINTS = 400;
 
 function buildChartRows(
   combinations: MaterialCombination[],
   paretoFrontier: MaterialCombination[],
-): { rows: Row[]; frontierLine: { totalCost: number; totalCarbon: number }[] } {
+  selectedId: string | null,
+): {
+  rows: Row[];
+  frontierLine: { totalCost: number; totalCarbon: number }[];
+  selectedRow: Row | null;
+} {
   const feasible = combinations.filter((c) => c.isFeasible);
   const pool: MaterialCombination[] = [...feasible];
   for (const c of paretoFrontier) {
@@ -44,12 +54,34 @@ function buildChartRows(
     pool.push(rest[i]!);
   }
 
-  const rows: Row[] = pool.map((c) => ({
-    id: c.id,
-    totalCost: c.totalCost,
-    totalCarbon: c.totalCarbon,
-    feasible: c.isFeasible,
-  }));
+  const selectedCombo = selectedId
+    ? combinations.find((c) => c.id === selectedId)
+    : null;
+  const poolIds = new Set(pool.map((p) => p.id));
+  if (selectedCombo && !poolIds.has(selectedCombo.id)) {
+    pool.push(selectedCombo);
+  }
+
+  const skip = new Set<string>();
+  if (selectedId) skip.add(selectedId);
+
+  const rows: Row[] = pool
+    .filter((c) => !skip.has(c.id))
+    .map((c) => ({
+      id: c.id,
+      totalCost: c.totalCost,
+      totalCarbon: c.totalCarbon,
+      feasible: c.isFeasible,
+    }));
+
+  const selectedRow: Row | null = selectedCombo
+    ? {
+        id: selectedCombo.id,
+        totalCost: selectedCombo.totalCost,
+        totalCarbon: selectedCombo.totalCarbon,
+        feasible: selectedCombo.isFeasible,
+      }
+    : null;
 
   const frontierLine = [...paretoFrontier]
     .sort((a, b) => a.totalCost - b.totalCost)
@@ -58,7 +90,7 @@ function buildChartRows(
       totalCarbon: c.totalCarbon,
     }));
 
-  return { rows, frontierLine };
+  return { rows, frontierLine, selectedRow };
 }
 
 export function ParetoChart({
@@ -66,6 +98,7 @@ export function ParetoChart({
   paretoFrontier,
   carbonBudget,
   costCeiling,
+  baseline,
   selectedCombination,
   onSelectCombination,
 }: {
@@ -73,156 +106,282 @@ export function ParetoChart({
   paretoFrontier: MaterialCombination[];
   carbonBudget: number;
   costCeiling: number;
+  baseline: MaterialCombination | null;
   selectedCombination: MaterialCombination | null;
   onSelectCombination: (c: MaterialCombination) => void;
 }) {
-  const { rows, frontierLine } = useMemo(
-    () => buildChartRows(combinations, paretoFrontier),
-    [combinations, paretoFrontier],
+  const selectedId = selectedCombination?.id ?? null;
+
+  const { rows, frontierLine, selectedRow } = useMemo(
+    () => buildChartRows(combinations, paretoFrontier, selectedId),
+    [combinations, paretoFrontier, selectedId],
   );
 
   const feasibleRows = rows.filter((r) => r.feasible);
   const infeasRows = rows.filter((r) => !r.feasible);
 
   return (
-    <div className="w-full text-foreground">
-      <p className="mb-3 text-sm text-muted">
-        Each point is one supplier mix across all lines.{" "}
-        <span className="text-emerald-600 dark:text-emerald-400">Green</span> =
-        meets both carbon budget and cost ceiling. Gray = outside one or both
-        limits. Orange curve = Pareto frontier (best carbon for a given cost).
-        Click a point to select it as your shortlist.
-      </p>
-      <div className="h-[420px] w-full">
-        <ResponsiveContainer width="100%" height="100%">
-          <ComposedChart margin={{ top: 16, right: 24, bottom: 48, left: 8 }}>
-            <CartesianGrid
-              strokeDasharray="3 3"
-              stroke="var(--border)"
-              opacity={0.6}
-            />
-            <XAxis
-              type="number"
-              dataKey="totalCost"
-              domain={["dataMin", "dataMax"]}
-              tick={axisTick}
-              stroke="var(--border-strong)"
-              tickFormatter={(v) => `₹${(Number(v) / 1e6).toFixed(1)}M`}
-              label={{
-                value: "Total cost (INR)",
-                position: "bottom",
-                offset: 12,
-                fill: "var(--foreground)",
-              }}
-            />
-            <YAxis
-              type="number"
-              dataKey="totalCarbon"
-              domain={["dataMin", "dataMax"]}
-              tick={axisTick}
-              stroke="var(--border-strong)"
-              tickFormatter={(v) => `${(Number(v) / 1000).toFixed(0)}k`}
-              label={{
-                value: "Embodied carbon (kgCO₂e)",
-                angle: -90,
-                position: "insideLeft",
-                fill: "var(--foreground)",
-              }}
-            />
-            <Tooltip
-              cursor={{ strokeDasharray: "3 3" }}
-              content={({ active, payload }) => {
-                if (!active || !payload?.length) return null;
-                const p = payload[0].payload as Row;
-                const full = combinations.find((c) => c.id === p.id);
-                return (
-                  <div className="rounded-lg border border-border bg-card p-3 text-xs text-foreground shadow-md">
-                    <div className="font-medium">Mix {p.id}</div>
-                    <div>{formatInr(p.totalCost)}</div>
-                    <div>{formatKgCo2e(p.totalCarbon)}</div>
-                    <div className="mt-1 text-subtle">
-                      {p.feasible ? "Feasible" : "Infeasible"}
-                    </div>
-                    {full && (
-                      <button
-                        type="button"
-                        className="mt-2 text-accent-muted underline"
-                        onClick={() => onSelectCombination(full)}
-                      >
-                        Select shortlist
-                      </button>
-                    )}
-                  </div>
-                );
-              }}
-            />
-            <ReferenceLine
-              y={carbonBudget}
-              stroke="#059669"
-              strokeDasharray="4 4"
-              label={{
-                value: "Carbon budget",
-                fill: "#059669",
-                position: "right",
-              }}
-            />
-            <ReferenceLine
-              x={costCeiling}
-              stroke="#2563eb"
-              strokeDasharray="4 4"
-              label={{
-                value: "Cost ceiling",
-                fill: "#2563eb",
-                position: "top",
-              }}
-            />
-            <Scatter
-              name="Infeasible"
-              data={infeasRows}
-              fill="#94a3b8"
-              onClick={(d) => {
-                const row = d as unknown as Row | undefined;
-                if (!row?.id) return;
-                const c = combinations.find((x) => x.id === row.id);
-                if (c) onSelectCombination(c);
-              }}
-            />
-            <Scatter
-              name="Feasible"
-              data={feasibleRows}
-              fill="#10b981"
-              onClick={(d) => {
-                const row = d as unknown as Row | undefined;
-                if (!row?.id) return;
-                const c = combinations.find((x) => x.id === row.id);
-                if (c) onSelectCombination(c);
-              }}
-            />
-            <Line
-              name="Pareto frontier"
-              data={frontierLine}
-              dataKey="totalCarbon"
-              stroke="#d97706"
-              strokeWidth={2}
-              dot={false}
-              type="monotone"
-              legendType="line"
-            />
-            {selectedCombination && (
-              <ReferenceLine
-                x={selectedCombination.totalCost}
-                stroke="#dc2626"
-                strokeWidth={2}
-                label={{ value: "Selected", fill: "#dc2626" }}
-              />
-            )}
-            <Legend wrapperStyle={{ color: "var(--foreground)" }} />
-          </ComposedChart>
-        </ResponsiveContainer>
+    <div className="w-full text-white">
+      {/* Intro copy — plain language */}
+      <div className="mb-4 rounded-2xl border border-white/[0.08] bg-white/[0.04] px-4 py-3 text-sm leading-relaxed text-white/75 backdrop-blur-sm">
+        <p className="font-medium text-white">What you are looking at</p>
+        <p className="mt-1">
+          Each dot is one possible way to assign suppliers to your materials.
+          <span className="text-[#17CF97]"> Teal dots</span> fit both your money
+          limit and carbon goal. Pale dots do not. The{" "}
+          <span className="text-[#ff9f43]">orange curve</span> connects the best
+          “cheap vs clean” tradeoffs.{" "}
+          <span className="text-[#38bdf8]">Blue</span> is the plan you selected.
+        </p>
+        <p className="mt-2 text-xs text-white/55">
+          Tip: toward the bottom-left is usually better — less cost and less
+          carbon.
+        </p>
       </div>
-      <p className="mt-2 text-center text-xs text-subtle">
-        Fewer points may be shown when there are many combinations, to keep the
-        chart readable.
+
+      {/* Axis titles outside the chart so they stay centered and readable */}
+      <div className="flex gap-2 sm:gap-3">
+        <div className="flex w-11 shrink-0 flex-col justify-center sm:w-14">
+          <p
+            className="text-center text-[11px] font-semibold leading-snug tracking-wide text-white/80 sm:text-xs"
+            style={{
+              writingMode: "vertical-rl",
+              transform: "rotate(180deg)",
+            }}
+          >
+            Carbon footprint (kg CO₂e) — lower is better
+          </p>
+        </div>
+
+        <div className="min-w-0 flex-1">
+          <div className="rounded-2xl border border-white/[0.08] bg-[#102235]/70 p-3 shadow-[0_0_40px_-12px_rgba(23,207,151,0.25)] backdrop-blur-md">
+            <div className="h-[min(420px,72vh)] w-full min-h-[300px]">
+              <ResponsiveContainer width="100%" height="100%">
+                <ComposedChart
+                  margin={{ top: 12, right: 8, bottom: 8, left: 4 }}
+                >
+                  <CartesianGrid
+                    strokeDasharray="3 3"
+                    stroke={GRID}
+                    opacity={0.9}
+                  />
+                  <XAxis
+                    type="number"
+                    dataKey="totalCost"
+                    domain={["dataMin", "dataMax"]}
+                    tick={{
+                      fill: "rgba(255,255,255,0.72)",
+                      fontSize: 11,
+                    }}
+                    stroke={GRID}
+                    tickFormatter={(v) => `₹${(Number(v) / 1e6).toFixed(1)}M`}
+                  />
+                  <YAxis
+                    type="number"
+                    dataKey="totalCarbon"
+                    domain={["dataMin", "dataMax"]}
+                    tick={{
+                      fill: "rgba(255,255,255,0.72)",
+                      fontSize: 11,
+                    }}
+                    stroke={GRID}
+                    width={52}
+                    tickFormatter={(v) =>
+                      `${(Number(v) / 1000).toFixed(0)}k`
+                    }
+                  />
+                  <Tooltip
+                    cursor={{
+                      strokeDasharray: "4 4",
+                      stroke: `${ACCENT}88`,
+                    }}
+                    content={({ active, payload }) => {
+                      if (!active || !payload?.length) return null;
+                      const p = payload[0].payload as Row;
+                      const full = combinations.find((c) => c.id === p.id);
+                      let costVs = "";
+                      let carbVs = "";
+                      if (full && baseline && baseline.totalCost > 0) {
+                        const cp =
+                          ((full.totalCost - baseline.totalCost) /
+                            baseline.totalCost) *
+                          100;
+                        costVs =
+                          cp <= 0
+                            ? `Price ${Math.abs(cp).toFixed(1)}% lower than starting mix`
+                            : `Price ${cp.toFixed(1)}% higher than starting mix`;
+                      }
+                      if (full && baseline && baseline.totalCarbon > 0) {
+                        const kp =
+                          ((baseline.totalCarbon - full.totalCarbon) /
+                            baseline.totalCarbon) *
+                          100;
+                        carbVs =
+                          kp >= 0
+                            ? `Carbon ${kp.toFixed(1)}% lower than starting mix`
+                            : `Carbon ${Math.abs(kp).toFixed(1)}% higher than starting mix`;
+                      }
+                      return (
+                        <div
+                          className="max-w-[260px] rounded-xl border px-3 py-2.5 text-xs shadow-xl backdrop-blur-md"
+                          style={{
+                            background: "rgba(12,28,43,0.96)",
+                            borderColor: "rgba(255,255,255,0.12)",
+                          }}
+                        >
+                          <p className="font-semibold text-[#17CF97]">
+                            Option {p.id}
+                          </p>
+                          <p className="mt-1 text-white/90">
+                            <span className="text-white/55">Total price: </span>
+                            {formatInr(p.totalCost)}
+                          </p>
+                          <p className="text-white/90">
+                            <span className="text-white/55">Carbon: </span>
+                            {formatKgCo2e(p.totalCarbon)}
+                          </p>
+                          {(costVs || carbVs) && (
+                            <div className="mt-2 border-t border-white/10 pt-2 text-[11px] text-white/65">
+                              {costVs && <p>{costVs}</p>}
+                              {carbVs && <p>{carbVs}</p>}
+                            </div>
+                          )}
+                          <p className="mt-2 text-[11px]">
+                            {p.feasible ? (
+                              <span className="text-[#17CF97]">
+                                ✓ Within your budget and carbon limits
+                              </span>
+                            ) : (
+                              <span className="text-[#ffcb45]">
+                                Outside one or both limits (still selectable)
+                              </span>
+                            )}
+                          </p>
+                          {full && (
+                            <button
+                              type="button"
+                              className="mt-2 w-full rounded-lg bg-[#17CF97] py-1.5 text-[11px] font-semibold text-[#06131d] transition hover:brightness-110"
+                              onClick={() => onSelectCombination(full)}
+                            >
+                              Use this supplier mix
+                            </button>
+                          )}
+                        </div>
+                      );
+                    }}
+                  />
+                  <ReferenceLine
+                    y={carbonBudget}
+                    stroke={ACCENT}
+                    strokeDasharray="5 5"
+                    strokeOpacity={0.75}
+                    label={{
+                      value: "Your carbon limit",
+                      fill: ACCENT,
+                      position: "right",
+                      fontSize: 10,
+                    }}
+                  />
+                  <ReferenceLine
+                    x={costCeiling}
+                    stroke="rgba(23,207,151,0.45)"
+                    strokeDasharray="5 5"
+                    label={{
+                      value: "Your budget limit",
+                      fill: "rgba(255,255,255,0.65)",
+                      position: "top",
+                      fontSize: 10,
+                    }}
+                  />
+                  <Scatter
+                    name="Other options (off limits)"
+                    data={infeasRows}
+                    fill={INFEASIBLE}
+                    isAnimationActive
+                    animationDuration={500}
+                    onClick={(d) => {
+                      const row = d as unknown as Row | undefined;
+                      if (!row?.id) return;
+                      const c = combinations.find((x) => x.id === row.id);
+                      if (c) onSelectCombination(c);
+                    }}
+                  />
+                  <Scatter
+                    name="Good options (in range)"
+                    data={feasibleRows}
+                    fill={FEASIBLE}
+                    isAnimationActive
+                    animationDuration={500}
+                    onClick={(d) => {
+                      const row = d as unknown as Row | undefined;
+                      if (!row?.id) return;
+                      const c = combinations.find((x) => x.id === row.id);
+                      if (c) onSelectCombination(c);
+                    }}
+                  />
+                  <Line
+                    name="Best tradeoff curve"
+                    data={frontierLine}
+                    dataKey="totalCarbon"
+                    stroke={FRONTIER}
+                    strokeWidth={2.5}
+                    dot={false}
+                    type="monotone"
+                    legendType="line"
+                    isAnimationActive
+                    animationDuration={700}
+                  />
+                  {selectedRow && (
+                    <Scatter
+                      name="Your selection"
+                      data={[selectedRow]}
+                      fill={SELECTED}
+                      legendType="circle"
+                      isAnimationActive
+                      animationDuration={350}
+                      shape={(props: { cx?: number; cy?: number }) => {
+                        const { cx, cy } = props;
+                        if (cx == null || cy == null) return null;
+                        return (
+                          <circle
+                            cx={cx}
+                            cy={cy}
+                            r={10}
+                            fill={SELECTED}
+                            stroke="#fff"
+                            strokeWidth={2}
+                            style={{
+                              filter:
+                                "drop-shadow(0 0 10px rgba(56,189,248,0.55))",
+                            }}
+                          />
+                        );
+                      }}
+                    />
+                  )}
+                  <Legend
+                    wrapperStyle={{
+                      paddingTop: 12,
+                      fontSize: 11,
+                      color: "rgba(255,255,255,0.72)",
+                    }}
+                  />
+                </ComposedChart>
+              </ResponsiveContainer>
+            </div>
+
+            {/* X-axis title centered under plot */}
+            <p className="mt-2 px-2 text-center text-[11px] font-semibold leading-snug text-white/75 sm:text-xs">
+              Total project cost (INR) — lower is usually cheaper for the same
+              scope
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <p className="mt-3 text-center text-[11px] text-white/45">
+        If you have many combinations, we sample dots so the chart stays easy to
+        read. Your selection is always shown.
       </p>
     </div>
   );

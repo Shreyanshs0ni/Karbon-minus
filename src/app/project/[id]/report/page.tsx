@@ -208,7 +208,7 @@ export default function ReportPage() {
     return (
       <>
         <Nav projectId={id} />
-        <main className="mx-auto max-w-5xl px-4 py-10">Loading…</main>
+        <main className="page-shell">Loading…</main>
       </>
     );
   }
@@ -221,18 +221,24 @@ export default function ReportPage() {
   return (
     <>
       <Nav projectId={id} />
-      <main className="mx-auto max-w-5xl px-4 py-10">
+      <main className="page-shell">
         <Link
           href={`/project/${id}`}
           className="text-sm text-accent hover:underline"
         >
           ← Dashboard
         </Link>
-        <h1 className="mt-4 text-2xl font-semibold text-foreground">Report</h1>
+        <p className="eyebrow mt-8">Insights</p>
+        <h1 className="mt-2 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+          Procurement report
+        </h1>
+        <p className="mt-2 max-w-2xl text-muted">
+          Baseline vs current, budgets, and export — same visual language as the rest of the app.
+        </p>
 
         {(winCost || winCarb) && (
-          <div className="mt-4 rounded-xl border border-emerald-500/40 bg-gradient-to-br from-emerald-500/15 to-teal-500/10 px-5 py-4 text-foreground shadow-sm">
-            <p className="text-lg font-semibold text-emerald-800 dark:text-emerald-200">
+          <div className="glass-panel-strong mt-8 rounded-2xl border border-accent/35 bg-accent/10 px-5 py-4 text-foreground">
+            <p className="text-lg font-semibold text-accent">
               Great progress on your procurement mix
             </p>
             <p className="mt-1 text-sm text-label">
@@ -254,14 +260,14 @@ export default function ReportPage() {
         )}
 
         {!winCost && !winCarb && hasBaseline && (
-          <div className="mt-4 rounded-xl border border-border bg-card px-5 py-4 text-sm text-muted">
+          <div className="glass-panel mt-8 px-5 py-4 text-sm text-muted">
             Current totals are aligned with your creation baseline. Adjust
             materials or run optimization to unlock further savings.
           </div>
         )}
 
-        <div className="mt-6 grid gap-6 lg:grid-cols-2">
-          <Card className="overflow-hidden border-emerald-500/20">
+        <div className="mt-10 grid gap-6 lg:grid-cols-2">
+          <Card className="overflow-hidden border-accent/20">
             <h2 className="text-lg font-medium text-foreground">
               Before vs after (creation baseline → now)
             </h2>
@@ -277,7 +283,7 @@ export default function ReportPage() {
                   {formatKgCo2e(baseline.carbon)}
                 </p>
               </div>
-              <div className="rounded-lg bg-emerald-500/10 p-4 ring-1 ring-emerald-500/30">
+              <div className="rounded-lg bg-accent/10 p-4 ring-1 ring-accent/30">
                 <p className="text-xs font-medium uppercase text-subtle">
                   Current
                 </p>

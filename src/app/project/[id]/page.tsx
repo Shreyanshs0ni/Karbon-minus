@@ -83,7 +83,7 @@ export default function ProjectDashboardPage() {
     return (
       <>
         <Nav projectId={id} />
-        <main className="mx-auto max-w-5xl px-4 py-10">Loading…</main>
+        <main className="page-shell">Loading…</main>
       </>
     );
   }
@@ -91,13 +91,14 @@ export default function ProjectDashboardPage() {
   return (
     <>
       <Nav projectId={id} />
-      <main className="mx-auto max-w-5xl px-4 py-10">
+      <main className="page-shell">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
-            <h1 className="text-2xl font-semibold text-foreground">
+            <p className="eyebrow">Overview</p>
+            <h1 className="mt-2 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
               {project.name}
             </h1>
-            <p className="mt-1 text-muted">Procurement dashboard</p>
+            <p className="mt-2 text-muted">Procurement dashboard — budgets & totals</p>
           </div>
           <Button type="button" variant="secondary" onClick={() => setEditOpen(true)}>
             Edit project
@@ -106,12 +107,12 @@ export default function ProjectDashboardPage() {
 
         {editOpen && (
           <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm"
             role="dialog"
             aria-modal="true"
             aria-labelledby="edit-project-title"
           >
-            <Card className="relative w-full max-w-md p-6 shadow-xl">
+            <Card className="relative w-full max-w-md border-accent/20 p-6 shadow-2xl">
               <h2 id="edit-project-title" className="text-lg font-semibold">
                 Edit project
               </h2>
@@ -187,9 +188,9 @@ export default function ProjectDashboardPage() {
             <p className="mt-1 text-2xl font-semibold">
               {formatKgCo2e(project.carbonBudget)}
             </p>
-            <div className="mt-3 h-2 overflow-hidden rounded-full bg-border">
+            <div className="mt-3 h-2 overflow-hidden rounded-full bg-border/80">
               <div
-                className="h-full rounded-full bg-emerald-500 transition-all"
+                className="h-full rounded-full bg-accent transition-all duration-500"
                 style={{
                   width: `${utilization.carbonPct}%`,
                 }}
@@ -205,9 +206,9 @@ export default function ProjectDashboardPage() {
             <p className="mt-1 text-2xl font-semibold">
               {formatInr(project.costCeiling)}
             </p>
-            <div className="mt-3 h-2 overflow-hidden rounded-full bg-border">
+            <div className="mt-3 h-2 overflow-hidden rounded-full bg-border/80">
               <div
-                className="h-full rounded-full bg-blue-500 transition-all"
+                className="h-full rounded-full bg-sky-500 transition-all duration-500 dark:bg-sky-400"
                 style={{
                   width: `${utilization.costPct}%`,
                 }}
