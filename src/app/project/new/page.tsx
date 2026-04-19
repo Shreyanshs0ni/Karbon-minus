@@ -51,7 +51,7 @@ export default function NewProjectPage() {
     <>
       <Nav />
       <main className="mx-auto max-w-lg px-4 py-10">
-        <Link href="/" className="text-sm text-accent hover:underline">
+        <Link href="/projects" className="text-sm text-accent hover:underline">
           ← Back
         </Link>
         <Card className="mt-6">

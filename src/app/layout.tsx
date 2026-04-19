@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ClerkProvider } from "@clerk/nextjs";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { LeafBorder } from "@/components/LeafBorder";
@@ -37,12 +38,14 @@ export default function RootLayout({
           className="app-background-gradient pointer-events-none fixed inset-0 -z-10 rotate-180"
         />
         <LeafBorder />
-        <ThemeProvider>
-          <ToastifyHost />
-          <ProjectProvider>
-            <div className="relative z-10 min-h-screen">{children}</div>
-          </ProjectProvider>
-        </ThemeProvider>
+        <ClerkProvider>
+          <ThemeProvider>
+            <ToastifyHost />
+            <ProjectProvider>
+              <div className="relative z-10 min-h-screen">{children}</div>
+            </ProjectProvider>
+          </ThemeProvider>
+        </ClerkProvider>
       </body>
     </html>
   );

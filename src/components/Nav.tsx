@@ -1,5 +1,6 @@
 "use client";
 
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -9,7 +10,14 @@ import { useTheme } from "@/context/ThemeContext";
 import { notifyError, notifySuccess } from "@/lib/toast";
 import { cn } from "@/lib/utils";
 
-export function Nav({ projectId }: { projectId?: string }) {
+export function Nav({
+  projectId,
+  minimal,
+}: {
+  projectId?: string;
+  /** Landing: logo only (no theme toggle, no nav links) */
+  minimal?: boolean;
+}) {
   const pathname = usePathname();
   const { loadDemo } = useProject();
   const { theme, toggleTheme } = useTheme();
@@ -20,8 +28,6 @@ export function Nav({ projectId }: { projectId?: string }) {
     ? [
         { href: `${base}`, label: "Overview" },
         { href: `${base}/materials`, label: "Materials" },
-        { href: `${base}/optimize`, label: "Optimize" },
-        { href: `${base}/report`, label: "Report" },
       ]
     : [];
 
@@ -44,79 +50,114 @@ export function Nav({ projectId }: { projectId?: string }) {
             Karbon Minus
           </span>
         </Link>
-        <nav className="flex flex-wrap items-center gap-5 text-sm md:gap-6">
-          <Link
-            href="/"
-            className={cn(
-              "relative pb-1 text-foreground transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:rounded-full after:bg-accent after:transition-transform after:duration-300 hover:text-accent hover:after:scale-x-100",
-              pathname === "/" && "font-medium text-accent after:scale-x-100",
-            )}
-          >
-            Projects
-          </Link>
-          {links.map((l) => (
+        {minimal && (
+          <div className="ml-auto flex flex-wrap items-center justify-end gap-3 text-sm">
+            <SignedOut>
+              <Link
+                href="/sign-in"
+                className="text-foreground transition-colors hover:text-accent"
+              >
+                Sign in
+              </Link>
+              <Link
+                href="/sign-up"
+                className="rounded-lg border border-accent-border px-3 py-1.5 font-medium text-accent transition-colors hover:bg-accent-bg-hover"
+              >
+                Sign up
+              </Link>
+            </SignedOut>
+            <SignedIn>
+              <Link
+                href="/projects"
+                className="text-foreground transition-colors hover:text-accent"
+              >
+                Your projects
+              </Link>
+              <UserButton afterSignOutUrl="/" />
+            </SignedIn>
+          </div>
+        )}
+        {!minimal && (
+          <nav className="flex flex-wrap items-center gap-5 text-sm md:gap-6">
             <Link
-              key={l.href}
-              href={l.href}
+              href="/projects"
               className={cn(
                 "relative pb-1 text-foreground transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:rounded-full after:bg-accent after:transition-transform after:duration-300 hover:text-accent hover:after:scale-x-100",
-                pathname === l.href &&
+                pathname === "/projects" &&
                   "font-medium text-accent after:scale-x-100",
               )}
             >
-              {l.label}
+              Projects
             </Link>
-          ))}
-          {!projectId && (
+            {links.map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                className={cn(
+                  "relative pb-1 text-foreground transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:rounded-full after:bg-accent after:transition-transform after:duration-300 hover:text-accent hover:after:scale-x-100",
+                  pathname === l.href &&
+                    "font-medium text-accent after:scale-x-100",
+                )}
+              >
+                {l.label}
+              </Link>
+            ))}
+            {!projectId && (
+              <button
+                type="button"
+                onClick={() => {
+                  void (async () => {
+                    try {
+                      const { name } = await loadDemo();
+                      notifySuccess("Demo project loaded", name);
+                    } catch (e) {
+                      if (e instanceof AllDemosLoadedError) {
+                        notifyError("No new demos left", e.message);
+                      } else {
+                        notifyError("Could not load demo", "Please try again.");
+                      }
+                    }
+                  })();
+                }}
+                className="rounded border border-accent-border px-2 py-1 text-accent hover:bg-accent-bg-hover"
+              >
+                Load demo
+              </button>
+            )}
+            <SignedIn>
+              <UserButton afterSignOutUrl="/" />
+            </SignedIn>
             <button
               type="button"
-              onClick={() => {
-                void (async () => {
-                  try {
-                    const { name } = await loadDemo();
-                    notifySuccess("Demo project loaded", name);
-                  } catch (e) {
-                    if (e instanceof AllDemosLoadedError) {
-                      notifyError("No new demos left", e.message);
-                    } else {
-                      notifyError("Could not load demo", "Please try again.");
-                    }
-                  }
-                })();
-              }}
-              className="rounded border border-accent-border px-2 py-1 text-accent hover:bg-accent-bg-hover"
-            >
-              Load demo
-            </button>
-          )}
-          <button
-            type="button"
-            role="switch"
-            aria-checked={theme === "dark"}
-            onClick={toggleTheme}
-            aria-label={
-              theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
-            }
-            className={cn(
-              "relative inline-flex h-7 w-12 items-center rounded-full border border-border-strong/90 bg-white/45 p-0.5 transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-transparent",
-              theme === "dark" && "border-accent-border/70 bg-accent/40",
-            )}
-          >
-            <span
+              role="switch"
+              aria-checked={theme === "dark"}
+              onClick={toggleTheme}
+              aria-label={
+                theme === "dark"
+                  ? "Switch to light mode"
+                  : "Switch to dark mode"
+              }
               className={cn(
-                "inline-flex h-5 w-5 items-center justify-center rounded-full bg-white shadow-[0_1px_4px_rgba(0,0,0,0.25)] transition-transform duration-300",
-                theme === "dark" && "translate-x-5 bg-slate-50",
+                "relative inline-flex h-7 w-12 items-center rounded-full border border-border-strong/90 bg-white/45 p-0.5 transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-transparent",
+                theme === "dark" && "border-accent-border/70 bg-accent/40",
               )}
             >
               <span
-                aria-hidden
-                className="text-[11px] leading-none text-accent"
+                className={cn(
+                  "inline-flex h-5 w-5 items-center justify-center rounded-full bg-white shadow-[0_1px_4px_rgba(0,0,0,0.25)] transition-transform duration-300",
+                  theme === "dark" && "translate-x-5 bg-slate-50",
+                )}
               >
-                {theme === "dark" ? "☾" : "☀"}
+                <span
+                  aria-hidden
+                  className="text-[11px] leading-none text-accent"
+                >
+                  {theme === "dark" ? "☾" : "☀"}
+                </span>
               </span>
-            </span>
-          </button>
-        </nav>
+            </button>
+          </nav>
+        )}
       </div>
     </header>
   );
