@@ -8,8 +8,9 @@ import { MaterialInput } from "@/components/materials/MaterialInput";
 import { MaterialList } from "@/components/materials/MaterialList";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
+import { Input } from "@/components/ui/Input";
 import { useProject } from "@/context/ProjectContext";
-import { notifyInfo, notifySuccess } from "@/lib/toast";
+import { notifyError, notifyInfo, notifySuccess } from "@/lib/toast";
 import { buildProjectMaterial } from "@/lib/materials";
 import type { AlternativeSuggestion, MaterialEntry } from "@/types";
 
@@ -27,6 +28,10 @@ export default function MaterialsPage() {
   } = useProject();
 
   const [browse, setBrowse] = useState<MaterialEntry[]>([]);
+  /** Quantity typed per catalog row (same unit as the material, e.g. kg). */
+  const [browseQtyById, setBrowseQtyById] = useState<Record<string, string>>(
+    {},
+  );
   const [cat, setCat] = useState<string>("all");
   const [alternatives, setAlternatives] = useState<AlternativeSuggestion[]>([]);
   const [altLoading, setAltLoading] = useState(false);
@@ -120,25 +125,61 @@ export default function MaterialsPage() {
             {browse.slice(0, 40).map((m) => (
               <li
                 key={m.id}
-                className="flex flex-wrap items-center justify-between gap-2 border-b border-divide py-2 text-foreground"
+                className="flex flex-wrap items-center justify-between gap-3 border-b border-divide py-2 text-foreground"
               >
-                <span>
+                <span className="min-w-0 flex-1">
                   {m.name} <span className="text-subtle">({m.category})</span>
                 </span>
-                <Button
-                  variant="secondary"
-                  type="button"
-                  onClick={() => {
-                    const pm = buildProjectMaterial(m, 1000);
-                    addMaterial(pm);
-                    notifySuccess(
-                      "Material added",
-                      `${m.name} added from database.`,
-                    );
-                  }}
-                >
-                  Add 1000 {m.unit}
-                </Button>
+                <div className="flex flex-wrap items-end gap-2">
+                  <label className="flex flex-col gap-0.5">
+                    <span className="text-xs text-muted">
+                      {m.unit === "kg" ? "Qty (kg)" : `Qty (${m.unit})`}
+                    </span>
+                    <Input
+                      type="number"
+                      min={0.001}
+                      step="any"
+                      inputMode="decimal"
+                      className="w-28 py-1.5"
+                      value={browseQtyById[m.id] ?? ""}
+                      onChange={(e) =>
+                        setBrowseQtyById((prev) => ({
+                          ...prev,
+                          [m.id]: e.target.value,
+                        }))
+                      }
+                    />
+                  </label>
+                  <Button
+                    variant="secondary"
+                    type="button"
+                    className="self-end"
+                    onClick={() => {
+                      const raw = browseQtyById[m.id]?.trim() ?? "";
+                      const q = Number(raw);
+                      if (!(q > 0)) {
+                        notifyError(
+                          "Enter a quantity",
+                          `Add a positive amount in ${m.unit}.`,
+                        );
+                        return;
+                      }
+                      const pm = buildProjectMaterial(m, q);
+                      addMaterial(pm);
+                      setBrowseQtyById((prev) => {
+                        const next = { ...prev };
+                        delete next[m.id];
+                        return next;
+                      });
+                      notifySuccess(
+                        "Material added",
+                        `${m.name} (${q} ${m.unit}) added from database.`,
+                      );
+                    }}
+                  >
+                    Add
+                  </Button>
+                </div>
               </li>
             ))}
           </ul>
