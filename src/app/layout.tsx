@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Poppins } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { LeafBorder } from "@/components/LeafBorder";
 import { ToastifyHost } from "@/components/ToastifyHost";
@@ -33,6 +34,9 @@ export default function RootLayout({
       <body
         className={`${poppins.variable} min-h-screen bg-background font-sans text-foreground antialiased`}
       >
+        <Script id="landing-dark" strategy="beforeInteractive">
+          {`try{var p=window.location.pathname;if(p==="/"||p==="")document.documentElement.classList.add("dark");}catch(e){}`}
+        </Script>
         <div
           aria-hidden
           className="app-background-gradient pointer-events-none fixed inset-0 -z-10 rotate-180"
